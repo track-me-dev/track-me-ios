@@ -8,20 +8,41 @@
 import UIKit
 import CoreLocation
 import MapKit
+import Alamofire
 
-class TrackListViewController: UIViewController {
+class SearchTrackVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tracks: [Track] = [Track(title: "track1", route: TrackUtils.getCoordinates(urlPath: "track-test")!)]
+    var tracks: [Track] = []
     
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
+        
+        AF.request("http://localhost:8080/tracks", method: .get)
+            .validate(statusCode: 200..<300)
+            .response { response in
+                switch response.result {
+                case .success(let value):
+                    do {
+                        let result = try JSONDecoder().decode([Track].self, from: value!)
+                        DispatchQueue.main.async {
+                            self.tracks = result
+                            self.tableView.reloadData()
+                        }
+                    } catch {
+                        print(error)
+                    }
+                case .failure(let error):
+                    print(error)
+                    break;
+                }
+            }
     }
 }
 
-extension TrackListViewController: UITableViewDataSource {
+extension SearchTrackVC: UITableViewDataSource {
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tracks.count
@@ -35,21 +56,16 @@ extension TrackListViewController: UITableViewDataSource {
     
 }
 
-extension TrackListViewController: UITableViewDelegate {
+extension SearchTrackVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "trackDetail", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? TrackDetailViewController {
+        if let destination = segue.destination as? TrackDetailVC {
             let track = tracks[(tableView.indexPathForSelectedRow?.row)!]
-            destination.trackTitle = track.title
-            var locations: [CLLocationCoordinate2D] = []
-            track.route.map { (lat, lng) in
-                locations.append(CLLocationCoordinate2D(latitude: lat, longitude: lng))
-            }
-            destination.trackPolyline = MKPolyline(coordinates: locations, count: locations.count)
+            destination.track = track
         }
     }
     

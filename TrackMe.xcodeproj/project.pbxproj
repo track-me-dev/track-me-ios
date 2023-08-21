@@ -7,36 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DD057E6F2A8BA50C00BA55BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E6E2A8BA50C00BA55BD /* ViewController.swift */; };
-		DD057E842A8BA53100BA55BD /* MapViewController+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E7E2A8BA53100BA55BD /* MapViewController+Location.swift */; };
+		DD057E842A8BA53100BA55BD /* RecordTrackVC+Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E7E2A8BA53100BA55BD /* RecordTrackVC+Location.swift */; };
 		DD057E852A8BA53100BA55BD /* BreadcrumbPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E7F2A8BA53100BA55BD /* BreadcrumbPathRenderer.swift */; };
-		DD057E862A8BA53100BA55BD /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E802A8BA53100BA55BD /* MapViewController.swift */; };
+		DD057E862A8BA53100BA55BD /* RecordTrackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E802A8BA53100BA55BD /* RecordTrackVC.swift */; };
 		DD057E872A8BA53100BA55BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E812A8BA53100BA55BD /* AppDelegate.swift */; };
 		DD057E882A8BA53100BA55BD /* BreadcrumbPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E822A8BA53100BA55BD /* BreadcrumbPath.swift */; };
-		DD057E892A8BA53100BA55BD /* MapViewController+Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E832A8BA53100BA55BD /* MapViewController+Menus.swift */; };
+		DD057E892A8BA53100BA55BD /* RecordTrackVC+Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E832A8BA53100BA55BD /* RecordTrackVC+Menus.swift */; };
 		DD057E932A8BA55700BA55BD /* bells.aif in Resources */ = {isa = PBXBuildFile; fileRef = DD057E8B2A8BA55700BA55BD /* bells.aif */; };
 		DD057E942A8BA55700BA55BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD057E8C2A8BA55700BA55BD /* Assets.xcassets */; };
 		DD057E952A8BA55700BA55BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD057E8D2A8BA55700BA55BD /* LaunchScreen.storyboard */; };
 		DD057E962A8BA55700BA55BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD057E8F2A8BA55700BA55BD /* Main.storyboard */; };
 		DD057E972A8BA55700BA55BD /* track-test.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DD057E912A8BA55700BA55BD /* track-test.gpx */; };
 		DD057E9A2A8BA62400BA55BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E992A8BA62400BA55BD /* SceneDelegate.swift */; };
-		DD057E9C2A8BAB9C00BA55BD /* TrackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E9B2A8BAB9C00BA55BD /* TrackListViewController.swift */; };
-		DD057E9E2A8BABD500BA55BD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E9D2A8BABD500BA55BD /* MainViewController.swift */; };
+		DD057E9C2A8BAB9C00BA55BD /* SearchTrackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E9B2A8BAB9C00BA55BD /* SearchTrackVC.swift */; };
+		DD057E9E2A8BABD500BA55BD /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E9D2A8BABD500BA55BD /* MainVC.swift */; };
 		DD057EA02A8BB2F300BA55BD /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E9F2A8BB2F300BA55BD /* Track.swift */; };
-		DD057EA22A8C6F9600BA55BD /* TrackDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057EA12A8C6F9500BA55BD /* TrackDetailViewController.swift */; };
+		DD057EA22A8C6F9600BA55BD /* TrackDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057EA12A8C6F9500BA55BD /* TrackDetailVC.swift */; };
 		DD057EA42A8CBFEA00BA55BD /* TrackUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057EA32A8CBFEA00BA55BD /* TrackUtils.swift */; };
 		DD057EA72A8CC3AC00BA55BD /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = DD057EA62A8CC3AC00BA55BD /* SWXMLHash */; };
+		DD057EAA2A8DFFAD00BA55BD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DD057EA92A8DFFAD00BA55BD /* Alamofire */; };
+		DD057EB52A8F608400BA55BD /* RaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057EB42A8F608400BA55BD /* RaceVC.swift */; };
+		DDF66FA22A8FD4AF00A5C515 /* track-test2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DDF66FA12A8FD4AF00A5C515 /* track-test2.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DD057E672A8BA50C00BA55BD /* TrackMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD057E6E2A8BA50C00BA55BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DD057E7E2A8BA53100BA55BD /* MapViewController+Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+Location.swift"; sourceTree = "<group>"; };
+		DD057E7E2A8BA53100BA55BD /* RecordTrackVC+Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecordTrackVC+Location.swift"; sourceTree = "<group>"; };
 		DD057E7F2A8BA53100BA55BD /* BreadcrumbPathRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreadcrumbPathRenderer.swift; sourceTree = "<group>"; };
-		DD057E802A8BA53100BA55BD /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		DD057E802A8BA53100BA55BD /* RecordTrackVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTrackVC.swift; sourceTree = "<group>"; };
 		DD057E812A8BA53100BA55BD /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "../../../../practice/ios-tutorial/DisplayingAnUpdatingPathOfAUsersLocationHistory/TravelHistory/AppDelegate.swift"; sourceTree = "<group>"; };
 		DD057E822A8BA53100BA55BD /* BreadcrumbPath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreadcrumbPath.swift; sourceTree = "<group>"; };
-		DD057E832A8BA53100BA55BD /* MapViewController+Menus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MapViewController+Menus.swift"; sourceTree = "<group>"; };
+		DD057E832A8BA53100BA55BD /* RecordTrackVC+Menus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecordTrackVC+Menus.swift"; sourceTree = "<group>"; };
 		DD057E8B2A8BA55700BA55BD /* bells.aif */ = {isa = PBXFileReference; lastKnownFileType = file; path = bells.aif; sourceTree = "<group>"; };
 		DD057E8C2A8BA55700BA55BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD057E8E2A8BA55700BA55BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -44,11 +45,13 @@
 		DD057E912A8BA55700BA55BD /* track-test.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "track-test.gpx"; sourceTree = "<group>"; };
 		DD057E922A8BA55700BA55BD /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD057E992A8BA62400BA55BD /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = "../../../../practice/ios-tutorial/DisplayingAnUpdatingPathOfAUsersLocationHistory/TravelHistory/SceneDelegate.swift"; sourceTree = "<group>"; };
-		DD057E9B2A8BAB9C00BA55BD /* TrackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListViewController.swift; sourceTree = "<group>"; };
-		DD057E9D2A8BABD500BA55BD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		DD057E9B2A8BAB9C00BA55BD /* SearchTrackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackVC.swift; sourceTree = "<group>"; };
+		DD057E9D2A8BABD500BA55BD /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		DD057E9F2A8BB2F300BA55BD /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
-		DD057EA12A8C6F9500BA55BD /* TrackDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailViewController.swift; sourceTree = "<group>"; };
+		DD057EA12A8C6F9500BA55BD /* TrackDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailVC.swift; sourceTree = "<group>"; };
 		DD057EA32A8CBFEA00BA55BD /* TrackUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUtils.swift; sourceTree = "<group>"; };
+		DD057EB42A8F608400BA55BD /* RaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceVC.swift; sourceTree = "<group>"; };
+		DDF66FA12A8FD4AF00A5C515 /* track-test2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "track-test2.gpx"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD057EA72A8CC3AC00BA55BD /* SWXMLHash in Frameworks */,
+				DD057EAA2A8DFFAD00BA55BD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,18 +88,10 @@
 			children = (
 				DD057E812A8BA53100BA55BD /* AppDelegate.swift */,
 				DD057E992A8BA62400BA55BD /* SceneDelegate.swift */,
-				DD057E6E2A8BA50C00BA55BD /* ViewController.swift */,
-				DD057E822A8BA53100BA55BD /* BreadcrumbPath.swift */,
-				DD057E7F2A8BA53100BA55BD /* BreadcrumbPathRenderer.swift */,
-				DD057E802A8BA53100BA55BD /* MapViewController.swift */,
-				DD057E7E2A8BA53100BA55BD /* MapViewController+Location.swift */,
-				DD057E832A8BA53100BA55BD /* MapViewController+Menus.swift */,
+				DD057EAB2A8E4E7300BA55BD /* view */,
+				DD057EAD2A8E4EBE00BA55BD /* dto */,
+				DD057EAC2A8E4EAA00BA55BD /* utils */,
 				DD057E8A2A8BA55700BA55BD /* Resources */,
-				DD057E9B2A8BAB9C00BA55BD /* TrackListViewController.swift */,
-				DD057E9D2A8BABD500BA55BD /* MainViewController.swift */,
-				DD057E9F2A8BB2F300BA55BD /* Track.swift */,
-				DD057EA32A8CBFEA00BA55BD /* TrackUtils.swift */,
-				DD057EA12A8C6F9500BA55BD /* TrackDetailViewController.swift */,
 			);
 			path = TrackMe;
 			sourceTree = "<group>";
@@ -108,9 +104,50 @@
 				DD057E8D2A8BA55700BA55BD /* LaunchScreen.storyboard */,
 				DD057E8F2A8BA55700BA55BD /* Main.storyboard */,
 				DD057E912A8BA55700BA55BD /* track-test.gpx */,
+				DDF66FA12A8FD4AF00A5C515 /* track-test2.gpx */,
 				DD057E922A8BA55700BA55BD /* Info.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		DD057EAB2A8E4E7300BA55BD /* view */ = {
+			isa = PBXGroup;
+			children = (
+				DD057EAE2A8E4F4800BA55BD /* renderer */,
+				DD057E9D2A8BABD500BA55BD /* MainVC.swift */,
+				DD057E802A8BA53100BA55BD /* RecordTrackVC.swift */,
+				DD057E7E2A8BA53100BA55BD /* RecordTrackVC+Location.swift */,
+				DD057E832A8BA53100BA55BD /* RecordTrackVC+Menus.swift */,
+				DD057E9B2A8BAB9C00BA55BD /* SearchTrackVC.swift */,
+				DD057EA12A8C6F9500BA55BD /* TrackDetailVC.swift */,
+				DD057EB42A8F608400BA55BD /* RaceVC.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		DD057EAC2A8E4EAA00BA55BD /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				DD057EA32A8CBFEA00BA55BD /* TrackUtils.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		DD057EAD2A8E4EBE00BA55BD /* dto */ = {
+			isa = PBXGroup;
+			children = (
+				DD057E822A8BA53100BA55BD /* BreadcrumbPath.swift */,
+				DD057E9F2A8BB2F300BA55BD /* Track.swift */,
+			);
+			path = dto;
+			sourceTree = "<group>";
+		};
+		DD057EAE2A8E4F4800BA55BD /* renderer */ = {
+			isa = PBXGroup;
+			children = (
+				DD057E7F2A8BA53100BA55BD /* BreadcrumbPathRenderer.swift */,
+			);
+			path = renderer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -131,6 +168,7 @@
 			name = TrackMe;
 			packageProductDependencies = (
 				DD057EA62A8CC3AC00BA55BD /* SWXMLHash */,
+				DD057EA92A8DFFAD00BA55BD /* Alamofire */,
 			);
 			productName = TrackMe;
 			productReference = DD057E672A8BA50C00BA55BD /* TrackMe.app */;
@@ -162,6 +200,7 @@
 			mainGroup = DD057E5E2A8BA50C00BA55BD;
 			packageReferences = (
 				DD057EA52A8CC3AC00BA55BD /* XCRemoteSwiftPackageReference "SWXMLHash" */,
+				DD057EA82A8DFFAD00BA55BD /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = DD057E682A8BA50C00BA55BD /* Products */;
 			projectDirPath = "";
@@ -177,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF66FA22A8FD4AF00A5C515 /* track-test2.gpx in Resources */,
 				DD057E962A8BA55700BA55BD /* Main.storyboard in Resources */,
 				DD057E932A8BA55700BA55BD /* bells.aif in Resources */,
 				DD057E952A8BA55700BA55BD /* LaunchScreen.storyboard in Resources */,
@@ -192,19 +232,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD057E842A8BA53100BA55BD /* MapViewController+Location.swift in Sources */,
+				DD057E842A8BA53100BA55BD /* RecordTrackVC+Location.swift in Sources */,
 				DD057EA02A8BB2F300BA55BD /* Track.swift in Sources */,
-				DD057E862A8BA53100BA55BD /* MapViewController.swift in Sources */,
-				DD057E6F2A8BA50C00BA55BD /* ViewController.swift in Sources */,
+				DD057E862A8BA53100BA55BD /* RecordTrackVC.swift in Sources */,
 				DD057EA42A8CBFEA00BA55BD /* TrackUtils.swift in Sources */,
 				DD057E882A8BA53100BA55BD /* BreadcrumbPath.swift in Sources */,
-				DD057EA22A8C6F9600BA55BD /* TrackDetailViewController.swift in Sources */,
+				DD057EA22A8C6F9600BA55BD /* TrackDetailVC.swift in Sources */,
 				DD057E872A8BA53100BA55BD /* AppDelegate.swift in Sources */,
-				DD057E892A8BA53100BA55BD /* MapViewController+Menus.swift in Sources */,
+				DD057E892A8BA53100BA55BD /* RecordTrackVC+Menus.swift in Sources */,
 				DD057E852A8BA53100BA55BD /* BreadcrumbPathRenderer.swift in Sources */,
 				DD057E9A2A8BA62400BA55BD /* SceneDelegate.swift in Sources */,
-				DD057E9C2A8BAB9C00BA55BD /* TrackListViewController.swift in Sources */,
-				DD057E9E2A8BABD500BA55BD /* MainViewController.swift in Sources */,
+				DD057E9C2A8BAB9C00BA55BD /* SearchTrackVC.swift in Sources */,
+				DD057E9E2A8BABD500BA55BD /* MainVC.swift in Sources */,
+				DD057EB52A8F608400BA55BD /* RaceVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +478,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		DD057EA82A8DFFAD00BA55BD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -445,6 +493,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD057EA52A8CC3AC00BA55BD /* XCRemoteSwiftPackageReference "SWXMLHash" */;
 			productName = SWXMLHash;
+		};
+		DD057EA92A8DFFAD00BA55BD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD057EA82A8DFFAD00BA55BD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

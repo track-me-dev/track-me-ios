@@ -10,19 +10,19 @@ import SWXMLHash
 
 class TrackUtils {
     
-    static func getCoordinates(urlPath: String) -> [(Double, Double)]? {
+    static func getCoordinates(urlPath: String) -> [[String:Double]]? {
         
         let gpxString = readGPX(urlPath: urlPath)
         
         do {
             let xml = try XMLHash.parse(gpxString!)
             
-            var coordinates: [(latitude: Double, longitude: Double)] = []
+            var coordinates = [Dictionary<String, Double>]()
             
             for wpt in xml["gpx"]["wpt"].all {
                 if let latitude = Double(wpt.element?.attribute(by: "lat")?.text ?? ""),
                    let longitude = Double(wpt.element?.attribute(by: "lon")?.text ?? "") {
-                    let coordinate = (latitude: latitude, longitude: longitude)
+                    let coordinate = ["latitude":latitude, "longitude":longitude]
                     coordinates.append(coordinate)
                 }
             }

@@ -8,22 +8,29 @@
 import UIKit
 import MapKit
 
-class TrackDetailViewController: UIViewController {
+class TrackDetailVC: UIViewController {
     
     let standardPadding = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
     
-    var trackTitle: String!
-    var trackPolyline: MKPolyline!
+    var track: Track? = nil
+    var trackPolyline: MKPolyline! {
+        var locations: [CLLocationCoordinate2D] = []
+        track!.coordinates.map { coord in
+            locations.append(CLLocationCoordinate2D(latitude: coord["latitude"]!, longitude: coord["longitude"]!))
+        }
+        return MKPolyline(coordinates: locations, count: locations.count)
+    }
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var titleView: UITextField!
     @IBOutlet weak var infoView: UITextField!
+    @IBOutlet weak var startRaceButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
-        titleView.text = trackTitle
+        titleView.text = track!.title
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,7 +42,7 @@ class TrackDetailViewController: UIViewController {
     
 }
 
-extension TrackDetailViewController: MKMapViewDelegate {
+extension TrackDetailVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)

@@ -17,7 +17,7 @@ enum SettingsKeys: String {
     case activity
 }
 
-extension MapViewController {
+extension RecordTrackVC {
     
     /// A menu for displaying the map's settings.
     private var mapSettingsMenu: UIMenu {

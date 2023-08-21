@@ -1,27 +1,18 @@
-/*
-See LICENSE folder for this sample’s licensing information.
+//
+//  RaceVC.swift
+//  TrackMe
+//
+//  Created by 곽진현 on 2023/08/18.
+//
 
-Abstract:
-The main view controller for the app, which displays the user location along with the path they travel on a map view.
-*/
-
-import AVFoundation
-import CoreLocation
-import Foundation
-import MapKit
 import UIKit
+import MapKit
+import CoreLocation
 
-class MapViewController: UIViewController {
-
-    // MARK: Overlay Properties
+class RaceVC: UIViewController, CLLocationManagerDelegate {
     
-    /// A custom `MKOverlay` that contains the path a user travels.
     var breadcrumbs: BreadcrumbPath!
-    
-    /// A custom overlay renderer object that draws the data in `crumbs` on the map.
     var breadcrumbPathRenderer: BreadcrumbPathRenderer?
-    
-    /// A setting that controls whether the `crumbBoundingPolygon` overlay is present on the map.
     var showBreadcrumbBounds = UserDefaults.standard.bool(forKey: SettingsKeys.showCrumbsBoundingArea.rawValue) {
         didSet {
             UserDefaults.standard.set(showBreadcrumbBounds, forKey: SettingsKeys.showCrumbsBoundingArea.rawValue)
@@ -32,89 +23,102 @@ class MapViewController: UIViewController {
             }
         }
     }
-    
-    /// The bounding rectangle of the breadcrumb overlay. This is only visible when `showBreadcrumbBounds` is `true`.
     var breadcrumbBoundingPolygon: MKPolygon?
     
-    // MARK: - Location Mangement Properties
+    var pathCoordinates: [CLLocation] {
+        return (TrackUtils.getCoordinates(urlPath: "track-test2")?.map { coordinate in
+            let latitude = coordinate["latitude"]
+            let longitude = coordinate["longitude"]
+            return CLLocation(latitude: latitude!, longitude: longitude!)
+        })!
+    }
+    var pathIndex: Int?
+    var timer: Timer?
+    var counterInSection: Int?
     
-    /// The manager interfacing with Core Location.
     let locationManager = CLLocationManager()
     
-    /// Location tracking is in an enabled state, and the system is delivering updates to the location manager delegate functions.
-    var isMonitoringLocation = false
-    
-    /// The requested accuracy of the location data.
-    var locationAccuracy: CLLocationAccuracy = UserDefaults.standard.double(forKey: SettingsKeys.accuracy.rawValue) {
-        didSet {
-            locationManager.desiredAccuracy = locationAccuracy
-            UserDefaults.standard.set(locationAccuracy, forKey: SettingsKeys.accuracy.rawValue)
-        }
-    }
-    
-    /// The type of activity for the location updates.
-    var activityType: CLActivityType = CLActivityType(rawValue: UserDefaults.standard.integer(forKey: SettingsKeys.activity.rawValue))! {
-        didSet {
-            locationManager.activityType = activityType
-            UserDefaults.standard.set(activityType.rawValue, forKey: SettingsKeys.activity.rawValue)
-        }
-    }
-    
-    /// A setting indicating whether the chime plays on location updates.
-    var chimeOnLocationUpdate = UserDefaults.standard.bool(forKey: SettingsKeys.chimeOnLocationUpdate.rawValue) {
-        didSet {
-            UserDefaults.standard.set(chimeOnLocationUpdate, forKey: SettingsKeys.chimeOnLocationUpdate.rawValue)
-        }
-    }
-    
-    // MARK: - Audio Properties
-    
-    /**
-     The audio player for the chime on each location update.
-     This makes it easy to tell when location updates occur while the app is in the background.
-     */
-    var audioPlayer: AVAudioPlayer?
-    
-    // MARK: - Outlets
-    
-    @IBOutlet var mapView: MKMapView!
-    @IBOutlet weak var settingsButton: UIBarButtonItem!
-    @IBOutlet weak var recordButton: UIBarButtonItem!
-    @IBOutlet weak var mapTrackingButton: UIBarButtonItem!
-    
-    /// This system initalizes this object when it decodes the contents of `Main.storyboard`.
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        // Tells the location manager to send updates to this object.
-        locationManager.delegate = self
-    }
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLocation()
+        mapView.delegate = self
+        // Remove the existing path because the app is starting to record a new path.
+        if let breadcrumbs {
+            mapView.removeOverlay(breadcrumbs)
+            breadcrumbPathRenderer = nil
+        }
         
-        // Allow the user to change the map view's tracking mode by placing this button in the navigation bar.
-        mapTrackingButton.customView = MKUserTrackingButton(mapView: mapView)
+        // Create a fresh path when starting to record the locations.
+        breadcrumbs = BreadcrumbPath()
+        mapView.addOverlay(breadcrumbs, level: .aboveRoads)
         
-        configureRecordingMenu()
-        configureSettingsMenu()
+        startMovementSimulation()
     }
     
-    // MARK: - Overlay Methods
+    func setupLocation() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+    }
     
-    // - Tag: renderer_needs_display
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    func startMovementSimulation() {
+        
+        let elapsedTime: Double = 10 // sample data
+        let fraction = Double(1) / Double(500)
+        let timeInterval = elapsedTime * fraction
+        
+        pathIndex = 0
+        counterInSection = 0
+        timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(handleTimerExecution), userInfo: fraction, repeats: true)
+    }
+    
+    @objc func handleTimerExecution() {
+        guard counterInSection! < 500 else {
+            pathIndex! += 1
+            counterInSection = 0
+            if (pathIndex! >= pathCoordinates.count - 1) {
+                timer?.invalidate()
+            }
+            return
+        }
+        var f = timer?.userInfo as! Double
+        
+        let start = pathCoordinates[pathIndex!]
+        let end = pathCoordinates[pathIndex! + 1]
+        f *= Double(counterInSection!)
+    
+        let interpolatedLatitude = start.coordinate.latitude + (end.coordinate.latitude - start.coordinate.latitude) * f
+        let interpolatedLongitude = start.coordinate.longitude + (end.coordinate.longitude - start.coordinate.longitude) * f
+        
+        let interpolatedLocation = CLLocation(latitude: interpolatedLatitude, longitude: interpolatedLongitude)
+        
+        displayNewBreadcrumbOnMap(interpolatedLocation)
+        
+        counterInSection! += 1
+    }
+    
     func displayNewBreadcrumbOnMap(_ newLocation: CLLocation) {
         /**
          If the `BreadcrumbPath` model object determines that the current location moves far enough from the previous location,
          use the returned updateRect to redraw just the changed area.
-        */
+         */
         let result = breadcrumbs.addLocation(newLocation)
         
         /**
          If the `BreadcrumbPath` model object sucessfully adds the location to the path,
          update the rendering of the path to include the new location.
          */
-         if result.locationAdded {
+        if result.locationAdded {
             // Compute the currently visible map zoom scale.
             let currentZoomScale = mapView.bounds.size.width / mapView.visibleMapRect.size.width
             
@@ -122,7 +126,7 @@ class MapViewController: UIViewController {
              Find out the line width at this zoom scale and outset the `pathBounds` by that amount to ensure the full line width draws.
              This covers situations where the new location is right on the edge of the provided `pathBounds`, and only part of the line width
              is within the bounds.
-            */
+             */
             let lineWidth = MKRoadWidthAtZoomScale(currentZoomScale)
             var areaToRedisplay = breadcrumbs.pathBounds
             areaToRedisplay = areaToRedisplay.insetBy(dx: -lineWidth, dy: -lineWidth)
@@ -132,7 +136,7 @@ class MapViewController: UIViewController {
              Use `setNeedsDisplay(_:)` to only redraw the changed area of a breadcrumb overlay. For this sample,
              the changed area includes the entire overlay because if the app was recently in the background, the breadcrumb path
              that's visible when the app returns to the foreground might change significantly.
-
+             
              In general, avoid calling `setNeedsDisplay()` on the overlay renderer without a map rectangle, as that may cause a render
              pass for the entire visible map, only some of which may contain updated data in the overlay.
              
@@ -141,7 +145,7 @@ class MapViewController: UIViewController {
              map is not instantaneous, so removing and adding an overlay may cause a visual flicker as the system updates the map view
              without the overlay, and then updates it again with the overlay. This is especially true if the map is displaying more than
              one overlay or updating the overlay data often, such as on each location update.
-            */
+             */
             breadcrumbPathRenderer?.setNeedsDisplay(areaToRedisplay)
         }
         
@@ -153,13 +157,6 @@ class MapViewController: UIViewController {
              */
             updateBreadcrumbBoundsOverlay()
         }
-        
-        if breadcrumbs.locations.count == 1 {
-            // After determining the user's location, zoom the map to that location, and set the map to follow the user.
-            let region = MKCoordinateRegion(center: newLocation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            mapView.setRegion(region, animated: true)
-            mapView.setUserTrackingMode(.followWithHeading, animated: true)
-        }
     }
     
     private func removeBreadcrumbBoundsOverlay() {
@@ -168,7 +165,6 @@ class MapViewController: UIViewController {
         }
     }
     
-    /// Recreate and rerender the overlay showing the bounds of the breadcrumb path.
     private func updateBreadcrumbBoundsOverlay() {
        removeBreadcrumbBoundsOverlay()
         
@@ -184,9 +180,10 @@ class MapViewController: UIViewController {
             mapView.addOverlay(breadcrumbBoundingPolygon!, level: .aboveRoads)
         }
     }
+
 }
 
-extension MapViewController: MKMapViewDelegate {
+extension RaceVC: MKMapViewDelegate {
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if let overlay = overlay as? BreadcrumbPath {
@@ -204,3 +201,4 @@ extension MapViewController: MKMapViewDelegate {
         }
     }
 }
+

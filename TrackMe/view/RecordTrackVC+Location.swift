@@ -5,12 +5,13 @@ Abstract:
 Manages interactions with Core Location and AVFoundation for reporting when a user's location changes.
 */
 
+import Alamofire
 import AVFoundation
 import CoreLocation
 import Foundation
 import UIKit
 
-extension MapViewController {
+extension RecordTrackVC {
     
     /// Start receiving location updates from Core Location.
     // - Tag: location_manager_config
@@ -63,10 +64,45 @@ extension MapViewController {
         
         locationManager.stopUpdatingLocation()
         tearDownAudioPlayer()
+        
+        // [http 요청 헤더 지정]
+        let header : HTTPHeaders = [
+            "Content-Type" : "application/json"
+        ]
+        
+        // [http 요청 파라미터 지정 실시]
+        let bodyData : Parameters = [
+            "title" : "test",
+            "coordinates" : breadcrumbs.locations.map { location in
+                let coord = location.coordinate
+                return ["latitude":coord.latitude, "longitude":coord.longitude]
+            }]
+        
+        AF.request("http://localhost:8080/tracks",
+                   method: .post,
+                   parameters: bodyData, // [전송 데이터]
+                   encoding: JSONEncoding.default, // [인코딩 스타일]
+                   headers: header // [헤더 지정]
+        )
+        .validate(statusCode: 200..<300)
+        .responseData { response in
+            switch response.result {
+            case .success(let value):
+                do {
+                    let result = try JSONDecoder().decode(Track.self, from: value)
+                    print(result.title)
+                } catch {
+                    print(error)
+                }
+            case .failure(let error):
+                print(error)
+                break;
+            }
+        }
     }
 }
 
-extension MapViewController: CLLocationManagerDelegate {
+extension RecordTrackVC: CLLocationManagerDelegate {
     
     // - Tag: location_manager_delegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -111,7 +147,7 @@ extension MapViewController: CLLocationManagerDelegate {
     }
 }
 
-extension MapViewController: AVAudioPlayerDelegate {
+extension RecordTrackVC: AVAudioPlayerDelegate {
     
     private func setupAudioPlayer() {
         setSessionActiveWithMixing(false)

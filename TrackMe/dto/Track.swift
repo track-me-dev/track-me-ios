@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Track {
+struct Track: Decodable {
+    let id: CLong
     let title: String
-    let route: [(Double, Double)]
+    var coordinates = [Dictionary<String, Double>]()
 }
