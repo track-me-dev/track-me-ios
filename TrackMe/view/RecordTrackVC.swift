@@ -12,6 +12,11 @@ import MapKit
 import UIKit
 
 class RecordTrackVC: UIViewController {
+    
+    // MARK: Record Properties
+    var startTime: Date?
+    var recordTime: Double?
+    
 
     // MARK: Overlay Properties
     

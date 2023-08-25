@@ -9,6 +9,12 @@ import Foundation
 
 struct Track: Decodable {
     let id: CLong
-    let title: String
-    var coordinates = [Dictionary<String, Double>]()
+    var title: String
+    var path = [Dictionary<String, Double>]()
+    var distance: Double
+    
+    // 백엔드 서버에서 일정 시각에 batch job으로 업데이트
+    var averageSlope: Double?
+    var lowestAltitude: Double?
+    var highestAltitude: Double?
 }

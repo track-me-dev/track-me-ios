@@ -173,16 +173,16 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BJT-tX-2oM">
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHk-tB-Fe8">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="38.333333333333336"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHk-tB-Fe8" userLabel="Title View">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Track Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ar3-Wk-WtJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="331.66666666666669" height="38.333333333333336"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Track Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ar3-Wk-WtJ" userLabel="title">
+                                                <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="60"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSz-gq-Qex">
-                                                <rect key="frame" x="331.66666666666669" y="0.0" width="61.333333333333314" height="38.333333333333336"/>
+                                                <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="60"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Start"/>
                                                 <connections>
@@ -190,49 +190,131 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="hSz-gq-Qex" firstAttribute="top" secondItem="NHk-tB-Fe8" secondAttribute="top" id="DVR-6L-ENR"/>
+                                            <constraint firstItem="ar3-Wk-WtJ" firstAttribute="top" secondItem="NHk-tB-Fe8" secondAttribute="top" id="VzU-QM-pQE"/>
+                                            <constraint firstItem="ar3-Wk-WtJ" firstAttribute="leading" secondItem="NHk-tB-Fe8" secondAttribute="leading" id="eOQ-1M-7DO"/>
+                                            <constraint firstAttribute="bottom" secondItem="ar3-Wk-WtJ" secondAttribute="bottom" id="f2h-Xn-0P7"/>
+                                            <constraint firstItem="hSz-gq-Qex" firstAttribute="width" secondItem="ar3-Wk-WtJ" secondAttribute="width" id="foc-gR-rlr"/>
+                                            <constraint firstAttribute="trailing" secondItem="hSz-gq-Qex" secondAttribute="trailing" id="i2z-QE-Af6"/>
+                                            <constraint firstItem="hSz-gq-Qex" firstAttribute="leading" secondItem="ar3-Wk-WtJ" secondAttribute="trailing" id="jaY-6T-JOW"/>
+                                            <constraint firstAttribute="bottom" secondItem="hSz-gq-Qex" secondAttribute="bottom" id="rTI-5f-Vr7"/>
+                                        </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Track Info" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nyl-d3-odd">
-                                        <rect key="frame" x="0.0" y="38.333333333333343" width="393" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAj-4k-2W7" userLabel="Info Name">
+                                        <rect key="frame" x="0.0" y="60" width="393" height="30"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Distance" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s8B-iA-eSo">
+                                                <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Avg Slope" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MF8-Yi-PKv">
+                                                <rect key="frame" x="98.333333333333343" y="0.0" width="98.333333333333343" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Lowest Elev" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S2f-ff-ZdE">
+                                                <rect key="frame" x="196.66666666666666" y="0.0" width="97.999999999999972" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Highest Elev" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8HA-54-oBB">
+                                                <rect key="frame" x="294.66666666666669" y="0.0" width="98.333333333333314" height="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="MF8-Yi-PKv" firstAttribute="width" secondItem="s8B-iA-eSo" secondAttribute="width" id="94f-b4-PNf"/>
+                                            <constraint firstItem="8HA-54-oBB" firstAttribute="width" secondItem="s8B-iA-eSo" secondAttribute="width" id="Uj7-pM-Fyj"/>
+                                            <constraint firstItem="S2f-ff-ZdE" firstAttribute="width" secondItem="s8B-iA-eSo" secondAttribute="width" id="rFx-1y-oMS"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QFf-by-3vB" userLabel="Info View">
+                                        <rect key="frame" x="0.0" y="90" width="393" height="59.666666666666657"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="distance" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B5j-VL-jlb">
+                                                <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="59.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="average slope" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ckn-AS-XAj">
+                                                <rect key="frame" x="98.333333333333343" y="0.0" width="98.333333333333343" height="59.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="lowest altitude" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3pP-gb-d8L">
+                                                <rect key="frame" x="196.66666666666666" y="0.0" width="97.999999999999972" height="59.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="highest altitude" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2uj-uJ-uF2">
+                                                <rect key="frame" x="294.66666666666669" y="0.0" width="98.333333333333314" height="59.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="B5j-VL-jlb" secondAttribute="bottom" id="0ph-LN-9Iz"/>
+                                            <constraint firstItem="2uj-uJ-uF2" firstAttribute="width" secondItem="B5j-VL-jlb" secondAttribute="width" id="2dk-WZ-egn"/>
+                                            <constraint firstItem="3pP-gb-d8L" firstAttribute="top" secondItem="QFf-by-3vB" secondAttribute="top" id="AfA-sg-mFZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="3pP-gb-d8L" secondAttribute="bottom" id="FdJ-RW-f1X"/>
+                                            <constraint firstAttribute="bottom" secondItem="ckn-AS-XAj" secondAttribute="bottom" id="ZP1-6a-upQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="2uj-uJ-uF2" secondAttribute="bottom" id="r3P-7x-F7p"/>
+                                            <constraint firstItem="3pP-gb-d8L" firstAttribute="width" secondItem="B5j-VL-jlb" secondAttribute="width" id="rKJ-y3-OSH"/>
+                                            <constraint firstItem="2uj-uJ-uF2" firstAttribute="top" secondItem="QFf-by-3vB" secondAttribute="top" id="ssD-iM-0LX"/>
+                                            <constraint firstItem="ckn-AS-XAj" firstAttribute="top" secondItem="QFf-by-3vB" secondAttribute="top" id="ueR-Sm-YT4"/>
+                                            <constraint firstItem="B5j-VL-jlb" firstAttribute="top" secondItem="QFf-by-3vB" secondAttribute="top" id="wbE-1X-dxp"/>
+                                            <constraint firstItem="ckn-AS-XAj" firstAttribute="width" secondItem="B5j-VL-jlb" secondAttribute="width" id="whQ-4k-MKy"/>
+                                        </constraints>
+                                    </stackView>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPL-5b-dd3">
-                                        <rect key="frame" x="0.0" y="72.333333333333314" width="393" height="676.66666666666674"/>
+                                        <rect key="frame" x="0.0" y="149.66666666666669" width="393" height="599.33333333333326"/>
                                         <standardMapConfiguration key="preferredConfiguration"/>
                                     </mapView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="nyl-d3-odd" secondAttribute="trailing" id="3ZF-Tm-oHv"/>
-                                    <constraint firstItem="TPL-5b-dd3" firstAttribute="top" secondItem="nyl-d3-odd" secondAttribute="bottom" id="8fU-vT-1Xg"/>
-                                    <constraint firstItem="NHk-tB-Fe8" firstAttribute="leading" secondItem="BJT-tX-2oM" secondAttribute="leading" id="9LU-NW-oYC"/>
-                                    <constraint firstItem="TPL-5b-dd3" firstAttribute="leading" secondItem="BJT-tX-2oM" secondAttribute="leading" id="QND-6x-dED"/>
-                                    <constraint firstAttribute="bottom" secondItem="TPL-5b-dd3" secondAttribute="bottom" id="Qq5-xE-22z"/>
-                                    <constraint firstItem="TPL-5b-dd3" firstAttribute="top" secondItem="nyl-d3-odd" secondAttribute="bottom" id="TKa-zR-VEm"/>
-                                    <constraint firstItem="nyl-d3-odd" firstAttribute="top" secondItem="NHk-tB-Fe8" secondAttribute="bottom" id="XPP-z1-CNP"/>
-                                    <constraint firstItem="nyl-d3-odd" firstAttribute="leading" secondItem="BJT-tX-2oM" secondAttribute="leading" id="d03-f9-9zf"/>
-                                    <constraint firstAttribute="trailing" secondItem="NHk-tB-Fe8" secondAttribute="trailing" id="ivv-7u-bDf"/>
-                                    <constraint firstAttribute="trailing" secondItem="TPL-5b-dd3" secondAttribute="trailing" id="nuI-wF-oiC"/>
-                                    <constraint firstItem="NHk-tB-Fe8" firstAttribute="top" secondItem="BJT-tX-2oM" secondAttribute="top" id="zrG-49-qNo"/>
+                                    <constraint firstItem="QFf-by-3vB" firstAttribute="leading" secondItem="BJT-tX-2oM" secondAttribute="leading" id="3Po-Oh-dbO"/>
+                                    <constraint firstAttribute="trailing" secondItem="NHk-tB-Fe8" secondAttribute="trailing" id="4Oc-tx-sHc"/>
+                                    <constraint firstAttribute="trailing" secondItem="TAj-4k-2W7" secondAttribute="trailing" id="E4c-Nd-5mL"/>
+                                    <constraint firstAttribute="trailing" secondItem="QFf-by-3vB" secondAttribute="trailing" id="Faw-Su-yJa"/>
+                                    <constraint firstItem="QFf-by-3vB" firstAttribute="top" secondItem="TAj-4k-2W7" secondAttribute="bottom" id="Hx0-nt-FKY"/>
+                                    <constraint firstItem="TPL-5b-dd3" firstAttribute="top" secondItem="QFf-by-3vB" secondAttribute="bottom" id="KFA-fz-K8K"/>
+                                    <constraint firstItem="TPL-5b-dd3" firstAttribute="height" secondItem="QFf-by-3vB" secondAttribute="height" multiplier="10" id="TXO-hR-sOM"/>
+                                    <constraint firstAttribute="bottom" secondItem="TPL-5b-dd3" secondAttribute="bottom" id="W7C-Jh-RPT"/>
+                                    <constraint firstItem="NHk-tB-Fe8" firstAttribute="leading" secondItem="BJT-tX-2oM" secondAttribute="leading" id="WBz-9O-3HX"/>
+                                    <constraint firstItem="QFf-by-3vB" firstAttribute="height" secondItem="NHk-tB-Fe8" secondAttribute="height" id="WSV-NI-jlj"/>
+                                    <constraint firstAttribute="trailing" secondItem="TPL-5b-dd3" secondAttribute="trailing" id="aqK-1A-fpP"/>
+                                    <constraint firstItem="TAj-4k-2W7" firstAttribute="height" secondItem="QFf-by-3vB" secondAttribute="height" multiplier="0.5" id="axa-lR-uPE"/>
+                                    <constraint firstItem="TPL-5b-dd3" firstAttribute="leading" secondItem="BJT-tX-2oM" secondAttribute="leading" id="hQ2-lB-ZYb"/>
+                                    <constraint firstItem="NHk-tB-Fe8" firstAttribute="top" secondItem="BJT-tX-2oM" secondAttribute="top" id="rEW-76-UlU"/>
+                                    <constraint firstItem="QFf-by-3vB" firstAttribute="height" secondItem="NHk-tB-Fe8" secondAttribute="height" id="uHa-NT-brB"/>
+                                    <constraint firstItem="TAj-4k-2W7" firstAttribute="top" secondItem="NHk-tB-Fe8" secondAttribute="bottom" id="vLM-ue-dnJ"/>
+                                    <constraint firstItem="TAj-4k-2W7" firstAttribute="leading" secondItem="BJT-tX-2oM" secondAttribute="leading" id="xxQ-lD-tJs"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gGX-Im-aVc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="BJT-tX-2oM" firstAttribute="leading" secondItem="ETw-3N-s5o" secondAttribute="leading" id="RYx-9y-zqu"/>
-                            <constraint firstAttribute="bottom" secondItem="BJT-tX-2oM" secondAttribute="bottom" id="fMJ-cs-sTh"/>
-                            <constraint firstItem="BJT-tX-2oM" firstAttribute="top" secondItem="gGX-Im-aVc" secondAttribute="top" id="jXG-KC-Tr5"/>
-                            <constraint firstAttribute="trailing" secondItem="BJT-tX-2oM" secondAttribute="trailing" id="n1r-XO-kKN"/>
+                            <constraint firstItem="BJT-tX-2oM" firstAttribute="top" secondItem="gGX-Im-aVc" secondAttribute="top" id="3UP-Ra-Ocu"/>
+                            <constraint firstItem="BJT-tX-2oM" firstAttribute="leading" secondItem="ETw-3N-s5o" secondAttribute="leading" id="4Rd-dt-iWN"/>
+                            <constraint firstAttribute="bottom" secondItem="BJT-tX-2oM" secondAttribute="bottom" id="TLl-Nn-oK5"/>
+                            <constraint firstAttribute="trailing" secondItem="BJT-tX-2oM" secondAttribute="trailing" id="pe1-ei-rhC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="bNB-zF-5rs">
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="infoView" destination="nyl-d3-odd" id="PG6-fu-D4h"/>
+                        <outlet property="averageSlopeField" destination="ckn-AS-XAj" id="2jc-lG-XHd"/>
+                        <outlet property="distanceField" destination="B5j-VL-jlb" id="oJX-mJ-JlD"/>
+                        <outlet property="highestAltitudeField" destination="2uj-uJ-uF2" id="Os5-0S-yOU"/>
+                        <outlet property="lowestAltitudeField" destination="3pP-gb-d8L" id="bjR-ny-r35"/>
                         <outlet property="mapView" destination="TPL-5b-dd3" id="u0H-Lw-tdw"/>
-                        <outlet property="startRaceButton" destination="hSz-gq-Qex" id="6O0-VX-iB8"/>
-                        <outlet property="titleView" destination="ar3-Wk-WtJ" id="deB-m5-3sO"/>
+                        <outlet property="startRaceButton" destination="hSz-gq-Qex" id="Dpg-c7-AXC"/>
+                        <outlet property="titleField" destination="ar3-Wk-WtJ" id="deB-m5-3sO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afH-mu-DEL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

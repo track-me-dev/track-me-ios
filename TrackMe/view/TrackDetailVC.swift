@@ -15,22 +15,32 @@ class TrackDetailVC: UIViewController {
     var track: Track? = nil
     var trackPolyline: MKPolyline! {
         var locations: [CLLocationCoordinate2D] = []
-        track!.coordinates.map { coord in
+        track!.path.forEach { coord in
             locations.append(CLLocationCoordinate2D(latitude: coord["latitude"]!, longitude: coord["longitude"]!))
         }
         return MKPolyline(coordinates: locations, count: locations.count)
     }
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var titleView: UITextField!
-    @IBOutlet weak var infoView: UITextField!
+    @IBOutlet weak var titleField: UITextField!
+    
+    @IBOutlet weak var distanceField: UITextField!
+    @IBOutlet weak var averageSlopeField: UITextField!
+    @IBOutlet weak var lowestAltitudeField: UITextField!
+    @IBOutlet weak var highestAltitudeField: UITextField!
     @IBOutlet weak var startRaceButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
-        titleView.text = track!.title
+        if let data = track {
+            titleField.text = data.title
+            distanceField.text = String(format: "%.2fkm", data.distance / 1000)
+            averageSlopeField.text = String(format: "%.1f%%", data.averageSlope!)
+            lowestAltitudeField.text = String(format: "%dm", Int(data.lowestAltitude!))
+            highestAltitudeField.text = String(format: "%dm", Int(data.highestAltitude!))
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
