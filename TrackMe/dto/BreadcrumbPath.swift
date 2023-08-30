@@ -78,7 +78,7 @@ class BreadcrumbPath: NSObject, MKOverlay {
      - Returns: `locationAdded` is `true` if the added coordinate moves far enough from the previously added location,
      `false` if the function discards the location. `boundingRectChanged` is true when the bounds of the updated crumb path change.
      */
-    func addLocation(_ newLocation: CLLocation) -> (locationAdded: Bool, boundingRectChanged: Bool) {
+    func addLocation(_ newLocation: CLLocation, isRecording: Bool) -> (locationAdded: Bool, boundingRectChanged: Bool) {
         /**
          This sample project delivers location updates on the main thread, though your app might do so
          on any thread. When MapKit renders the overlay, multiple background threads may be drawing
@@ -86,10 +86,12 @@ class BreadcrumbPath: NSObject, MKOverlay {
          read data from this object, which could lead to a data race. Using a lock for access avoids data races.
         */
         let result = protectedBreadcrumbData.withLock { breadcrumbData in
-            guard isNewLocationUsable(newLocation, breadcrumbData: breadcrumbData) else {
-                let locationChanged = false
-                let boundsChanged = false
-                return (locationChanged, boundsChanged)
+            if isRecording { // recording mode는 newLocation 검증 필요함
+                guard isNewLocationUsable(newLocation, breadcrumbData: breadcrumbData) else {
+                    let locationChanged = false
+                    let boundsChanged = false
+                    return (locationChanged, boundsChanged)
+                }
             }
             
             var previousLocation = breadcrumbData.locations.last

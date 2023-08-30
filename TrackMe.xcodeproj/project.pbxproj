@@ -28,6 +28,7 @@
 		DD057EAA2A8DFFAD00BA55BD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DD057EA92A8DFFAD00BA55BD /* Alamofire */; };
 		DD057EB52A8F608400BA55BD /* RaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057EB42A8F608400BA55BD /* RaceVC.swift */; };
 		DDF66FA22A8FD4AF00A5C515 /* track-test2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DDF66FA12A8FD4AF00A5C515 /* track-test2.gpx */; };
+		DDF66FA62A9468AE00A5C515 /* track-test3.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DDF66FA52A9468AE00A5C515 /* track-test3.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		DD057EA32A8CBFEA00BA55BD /* TrackUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUtils.swift; sourceTree = "<group>"; };
 		DD057EB42A8F608400BA55BD /* RaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceVC.swift; sourceTree = "<group>"; };
 		DDF66FA12A8FD4AF00A5C515 /* track-test2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "track-test2.gpx"; sourceTree = "<group>"; };
+		DDF66FA52A9468AE00A5C515 /* track-test3.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "track-test3.gpx"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				DD057E8F2A8BA55700BA55BD /* Main.storyboard */,
 				DD057E912A8BA55700BA55BD /* track-test.gpx */,
 				DDF66FA12A8FD4AF00A5C515 /* track-test2.gpx */,
+				DDF66FA52A9468AE00A5C515 /* track-test3.gpx */,
 				DD057E922A8BA55700BA55BD /* Info.plist */,
 			);
 			path = Resources;
@@ -216,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF66FA62A9468AE00A5C515 /* track-test3.gpx in Resources */,
 				DDF66FA22A8FD4AF00A5C515 /* track-test2.gpx in Resources */,
 				DD057E962A8BA55700BA55BD /* Main.storyboard in Resources */,
 				DD057E932A8BA55700BA55BD /* bells.aif in Resources */,

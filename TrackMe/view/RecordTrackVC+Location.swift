@@ -56,10 +56,16 @@ extension RecordTrackVC {
         locationManager.startUpdatingLocation()
        
         isMonitoringLocation = true
+        
+        // 5초 후에 기록 측정 시작
+        startTime = Date(timeIntervalSinceNow: 5)
     }
     
     /// Stop receiving location updates from Core Location.
     func stopRecordingLocation() {
+        // 기록 종료
+        recordTime = Date().timeIntervalSince(startTime!)
+        
         isMonitoringLocation = false
         
         locationManager.stopUpdatingLocation()
@@ -73,10 +79,16 @@ extension RecordTrackVC {
         // [http 요청 파라미터 지정 실시]
         let bodyData : Parameters = [
             "title" : "test",
-            "coordinates" : breadcrumbs.locations.map { location in
+            "path" : breadcrumbs.locations.map { location in
                 let coord = location.coordinate
-                return ["latitude":coord.latitude, "longitude":coord.longitude]
-            }]
+                let timestamp = location.timestamp.timeIntervalSince(startTime!)
+                return ["latitude":coord.latitude, "longitude":coord.longitude, "timestamp": timestamp]
+            },
+            "distance" : breadcrumbs.locations.first!.distance(from: breadcrumbs.locations.last!),
+            "trackRecord" : [
+                "time" : recordTime
+            ]
+        ]
         
         AF.request("http://localhost:8080/tracks",
                    method: .post,
@@ -90,7 +102,6 @@ extension RecordTrackVC {
             case .success(let value):
                 do {
                     let result = try JSONDecoder().decode(Track.self, from: value)
-                    print(result.title)
                 } catch {
                     print(error)
                 }
