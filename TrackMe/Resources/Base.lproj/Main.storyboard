@@ -186,7 +186,7 @@
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Start"/>
                                                 <connections>
-                                                    <segue destination="g5y-fa-0j4" kind="show" id="ACu-hU-ZmM"/>
+                                                    <segue destination="g5y-fa-0j4" kind="show" identifier="startRace" id="ACu-hU-ZmM"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -329,23 +329,108 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vq5-e2-1QQ">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GXt-zq-sSa" userLabel="Race View">
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
-                                <standardMapConfiguration key="preferredConfiguration"/>
-                            </mapView>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a9Q-VK-gRo" userLabel="Record View">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="83.333333333333329"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AsY-G3-62k" userLabel="Time View">
+                                                <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="83.333333333333329"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eV1-db-eXZ" userLabel="Time Label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="41.666666666666664"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQi-kc-I4c" userLabel="Time Value">
+                                                        <rect key="frame" x="0.0" y="41.666666666666657" width="196.66666666666666" height="41.666666666666657"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="eV1-db-eXZ" firstAttribute="top" secondItem="AsY-G3-62k" secondAttribute="top" id="IRt-n7-d28"/>
+                                                    <constraint firstItem="DQi-kc-I4c" firstAttribute="leading" secondItem="AsY-G3-62k" secondAttribute="leading" id="YcJ-5Y-hi1"/>
+                                                    <constraint firstItem="DQi-kc-I4c" firstAttribute="top" secondItem="eV1-db-eXZ" secondAttribute="bottom" id="a9f-aw-PmI"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eV1-db-eXZ" secondAttribute="trailing" id="gNJ-a7-UKW"/>
+                                                    <constraint firstItem="eV1-db-eXZ" firstAttribute="leading" secondItem="AsY-G3-62k" secondAttribute="leading" id="iw9-af-sp1"/>
+                                                    <constraint firstAttribute="trailing" secondItem="DQi-kc-I4c" secondAttribute="trailing" id="nKw-vg-4a5"/>
+                                                    <constraint firstAttribute="bottom" secondItem="DQi-kc-I4c" secondAttribute="bottom" id="sXU-Kg-zwO"/>
+                                                    <constraint firstItem="DQi-kc-I4c" firstAttribute="height" secondItem="eV1-db-eXZ" secondAttribute="height" id="uGl-po-55q"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jzl-9h-7lh" userLabel="Distance View">
+                                                <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="83.333333333333329"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFG-Vt-WED" userLabel="Distance Label">
+                                                        <rect key="frame" x="0.0" y="0.0" width="196.33333333333334" height="41.666666666666664"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZP-fP-XZY" userLabel="Distance Value">
+                                                        <rect key="frame" x="0.0" y="41.666666666666657" width="196.33333333333334" height="41.666666666666657"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="uZP-fP-XZY" firstAttribute="top" secondItem="cFG-Vt-WED" secondAttribute="bottom" id="3B0-vf-9za"/>
+                                                    <constraint firstItem="cFG-Vt-WED" firstAttribute="leading" secondItem="jzl-9h-7lh" secondAttribute="leading" id="3iQ-NL-52h"/>
+                                                    <constraint firstAttribute="bottom" secondItem="uZP-fP-XZY" secondAttribute="bottom" id="6DM-G7-inn"/>
+                                                    <constraint firstAttribute="trailing" secondItem="cFG-Vt-WED" secondAttribute="trailing" id="8pN-cs-I6G"/>
+                                                    <constraint firstItem="cFG-Vt-WED" firstAttribute="top" secondItem="jzl-9h-7lh" secondAttribute="top" id="MR8-qW-sMK"/>
+                                                    <constraint firstItem="uZP-fP-XZY" firstAttribute="leading" secondItem="jzl-9h-7lh" secondAttribute="leading" id="PBM-SK-TWK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="uZP-fP-XZY" secondAttribute="trailing" id="kWD-Wq-d3Q"/>
+                                                    <constraint firstItem="uZP-fP-XZY" firstAttribute="height" secondItem="cFG-Vt-WED" secondAttribute="height" id="yCk-Bh-CNN"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="jzl-9h-7lh" secondAttribute="bottom" id="0vL-hO-HB1"/>
+                                            <constraint firstItem="jzl-9h-7lh" firstAttribute="top" secondItem="a9Q-VK-gRo" secondAttribute="top" id="EKw-ch-Rlj"/>
+                                            <constraint firstAttribute="bottom" secondItem="AsY-G3-62k" secondAttribute="bottom" id="EPg-6R-faN"/>
+                                            <constraint firstItem="AsY-G3-62k" firstAttribute="top" secondItem="a9Q-VK-gRo" secondAttribute="top" id="JbU-MP-hqB"/>
+                                            <constraint firstItem="jzl-9h-7lh" firstAttribute="leading" secondItem="AsY-G3-62k" secondAttribute="trailing" id="Jps-sG-yKN"/>
+                                            <constraint firstAttribute="trailing" secondItem="jzl-9h-7lh" secondAttribute="trailing" id="P9o-pw-Old"/>
+                                            <constraint firstItem="jzl-9h-7lh" firstAttribute="width" secondItem="AsY-G3-62k" secondAttribute="width" id="gHU-EC-hp8"/>
+                                            <constraint firstItem="AsY-G3-62k" firstAttribute="leading" secondItem="a9Q-VK-gRo" secondAttribute="leading" id="wp9-Qh-0gi"/>
+                                        </constraints>
+                                    </stackView>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vq5-e2-1QQ">
+                                        <rect key="frame" x="0.0" y="83.333333333333314" width="393" height="665.66666666666674"/>
+                                        <standardMapConfiguration key="preferredConfiguration"/>
+                                    </mapView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vq5-e2-1QQ" firstAttribute="leading" secondItem="GXt-zq-sSa" secondAttribute="leading" id="CMx-Rr-hR9"/>
+                                    <constraint firstItem="vq5-e2-1QQ" firstAttribute="height" secondItem="a9Q-VK-gRo" secondAttribute="height" multiplier="8" id="HiD-dh-80I"/>
+                                    <constraint firstAttribute="bottom" secondItem="vq5-e2-1QQ" secondAttribute="bottom" id="IW4-p7-fVA"/>
+                                    <constraint firstItem="vq5-e2-1QQ" firstAttribute="top" secondItem="a9Q-VK-gRo" secondAttribute="bottom" id="Ryy-ed-JGa"/>
+                                    <constraint firstAttribute="trailing" secondItem="vq5-e2-1QQ" secondAttribute="trailing" id="bcF-Sh-IIP"/>
+                                    <constraint firstAttribute="trailing" secondItem="a9Q-VK-gRo" secondAttribute="trailing" id="nFp-xX-4Ta"/>
+                                    <constraint firstItem="a9Q-VK-gRo" firstAttribute="leading" secondItem="GXt-zq-sSa" secondAttribute="leading" id="sFS-ym-q7z"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="P36-QO-oIy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vq5-e2-1QQ" firstAttribute="leading" secondItem="bGf-Uz-XkO" secondAttribute="leading" id="DrH-ql-olC"/>
-                            <constraint firstItem="vq5-e2-1QQ" firstAttribute="top" secondItem="P36-QO-oIy" secondAttribute="top" id="m6r-DY-olv"/>
-                            <constraint firstAttribute="trailing" secondItem="vq5-e2-1QQ" secondAttribute="trailing" id="rZV-A7-gkb"/>
-                            <constraint firstAttribute="bottom" secondItem="vq5-e2-1QQ" secondAttribute="bottom" id="xpz-Ou-2XT"/>
+                            <constraint firstItem="GXt-zq-sSa" firstAttribute="top" secondItem="P36-QO-oIy" secondAttribute="top" id="Ki1-RO-xpR"/>
+                            <constraint firstAttribute="bottom" secondItem="GXt-zq-sSa" secondAttribute="bottom" id="QTH-Lk-tNN"/>
+                            <constraint firstItem="GXt-zq-sSa" firstAttribute="leading" secondItem="bGf-Uz-XkO" secondAttribute="leading" id="Rd9-UE-Etw"/>
+                            <constraint firstAttribute="trailing" secondItem="GXt-zq-sSa" secondAttribute="trailing" id="Vjw-8j-Ofx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rTs-bD-kMG"/>
                     <connections>
+                        <outlet property="distanceView" destination="uZP-fP-XZY" id="QhZ-gE-0RM"/>
                         <outlet property="mapView" destination="vq5-e2-1QQ" id="uGp-XP-dkG"/>
+                        <outlet property="timeView" destination="DQi-kc-I4c" id="pnz-BF-Wgh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6o-Ye-5IP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

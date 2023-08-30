@@ -11,7 +11,7 @@ import CoreLocation
 
 class RaceVC: UIViewController, CLLocationManagerDelegate {
     
-    var breadcrumbs: BreadcrumbPath!
+    var pathOfRank1: BreadcrumbPath!
     var breadcrumbPathRenderer: BreadcrumbPathRenderer?
     var showBreadcrumbBounds = UserDefaults.standard.bool(forKey: SettingsKeys.showCrumbsBoundingArea.rawValue) {
         didSet {
@@ -25,86 +25,100 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     }
     var breadcrumbBoundingPolygon: MKPolygon?
     
-    var pathCoordinates: [CLLocation] {
-        return (TrackUtils.getCoordinates(urlPath: "track-test2")?.map { coordinate in
-            let latitude = coordinate["latitude"]
-            let longitude = coordinate["longitude"]
-            return CLLocation(latitude: latitude!, longitude: longitude!)
-        })!
-    }
-    var pathIndex: Int?
-    var timer: Timer?
-    var counterInSection: Int?
+    var coordinatesOfRank1: [CLLocation]?
+    var timestampsOfRank1: [Double]?
+    var coordIndex: Int?
+    var counter: Int?
+    var timeInterval: Double?
+    var simulator: Timer?
+    
+    var recordTimer: Timer?
+    var elapsedTime: TimeInterval = 0
+    var previousLocation: CLLocation?
+    var totalDistance: CLLocationDistance = 0.0
     
     let locationManager = CLLocationManager()
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var timeView: UILabel!
+    @IBOutlet weak var distanceView: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLocation()
+        
         mapView.delegate = self
+        mapView.userTrackingMode = .follow
+        setupLocationManager()
+        
         // Remove the existing path because the app is starting to record a new path.
-        if let breadcrumbs {
-            mapView.removeOverlay(breadcrumbs)
+        if let pathOfRank1 {
+            mapView.removeOverlay(pathOfRank1)
             breadcrumbPathRenderer = nil
         }
         
         // Create a fresh path when starting to record the locations.
-        breadcrumbs = BreadcrumbPath()
-        mapView.addOverlay(breadcrumbs, level: .aboveRoads)
+        pathOfRank1 = BreadcrumbPath()
+        mapView.addOverlay(pathOfRank1, level: .aboveRoads)
         
-        startMovementSimulation()
-    }
-    
-    func setupLocation() {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
-        mapView.showsUserLocation = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.recordTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+                self.locationManager.startUpdatingLocation()
+                self.elapsedTime += timer.timeInterval
+                
+                let hours = Int(self.elapsedTime) / 3600
+                let minutes = (Int(self.elapsedTime) % 3600) / 60
+                let seconds = Int(self.elapsedTime) % 60
+                
+                self.timeView.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+            }
+            self.simulateRank1()
+        }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.last {
-            let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-            mapView.setRegion(region, animated: true)
+        if let newLocation = locations.last {
+            if let previousLocation = previousLocation {
+                let distance = newLocation.distance(from: previousLocation)
+                totalDistance += distance
+                distanceView.text = String(format: "%.2f km", totalDistance / 1000)
+            }
+            previousLocation = newLocation
         }
     }
     
-    func startMovementSimulation() {
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.allowsBackgroundLocationUpdates = true
+    }
+    
+    func simulateRank1() {
         
-        let elapsedTime: Double = 10 // sample data
-        let fraction = Double(1) / Double(500)
-        let timeInterval = elapsedTime * fraction
+        var minInterval = (timestampsOfRank1?.last)! - (timestampsOfRank1?.first)!
+        for i in 0..<timestampsOfRank1!.count - 1 {
+            minInterval = min(minInterval, timestampsOfRank1![i + 1] - timestampsOfRank1![i])
+        }
+        timeInterval = minInterval / 10
+        let activateIndex = timestampsOfRank1?.map { Int(($0 - (timestampsOfRank1?.first)!) / timeInterval!) }
         
-        pathIndex = 0
-        counterInSection = 0
-        timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(handleTimerExecution), userInfo: fraction, repeats: true)
+        coordIndex = 0
+        counter = 0
+        simulator = Timer.scheduledTimer(timeInterval: timeInterval!, target: self, selector: #selector(handleTimerExecution), userInfo: activateIndex, repeats: true)
     }
     
     @objc func handleTimerExecution() {
-        guard counterInSection! < 500 else {
-            pathIndex! += 1
-            counterInSection = 0
-            if (pathIndex! >= pathCoordinates.count - 1) {
-                timer?.invalidate()
-            }
+        guard coordIndex! < coordinatesOfRank1!.count else {
+            simulator!.invalidate()
             return
         }
-        var f = timer?.userInfo as! Double
-        
-        let start = pathCoordinates[pathIndex!]
-        let end = pathCoordinates[pathIndex! + 1]
-        f *= Double(counterInSection!)
     
-        let interpolatedLatitude = start.coordinate.latitude + (end.coordinate.latitude - start.coordinate.latitude) * f
-        let interpolatedLongitude = start.coordinate.longitude + (end.coordinate.longitude - start.coordinate.longitude) * f
-        
-        let interpolatedLocation = CLLocation(latitude: interpolatedLatitude, longitude: interpolatedLongitude)
-        
-        displayNewBreadcrumbOnMap(interpolatedLocation)
-        
-        counterInSection! += 1
+        let activateIndex = simulator?.userInfo as! [Int]
+        if activateIndex[coordIndex!] == counter! {
+            displayNewBreadcrumbOnMap(coordinatesOfRank1![coordIndex!])
+            coordIndex! += 1
+        }
+        counter! += 1
     }
     
     func displayNewBreadcrumbOnMap(_ newLocation: CLLocation) {
@@ -112,7 +126,7 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
          If the `BreadcrumbPath` model object determines that the current location moves far enough from the previous location,
          use the returned updateRect to redraw just the changed area.
          */
-        let result = breadcrumbs.addLocation(newLocation)
+        let result = pathOfRank1.addLocation(newLocation, isRecording: false)
         
         /**
          If the `BreadcrumbPath` model object sucessfully adds the location to the path,
@@ -128,7 +142,7 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
              is within the bounds.
              */
             let lineWidth = MKRoadWidthAtZoomScale(currentZoomScale)
-            var areaToRedisplay = breadcrumbs.pathBounds
+            var areaToRedisplay = pathOfRank1.pathBounds
             areaToRedisplay = areaToRedisplay.insetBy(dx: -lineWidth, dy: -lineWidth)
             
             /**
@@ -169,7 +183,7 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
        removeBreadcrumbBoundsOverlay()
         
         if showBreadcrumbBounds {
-            let pathBounds = breadcrumbs.pathBounds
+            let pathBounds = pathOfRank1.pathBounds
             let boundingPoints = [
                 MKMapPoint(x: pathBounds.minX, y: pathBounds.minY),
                 MKMapPoint(x: pathBounds.minX, y: pathBounds.maxY),

@@ -114,7 +114,7 @@ class RecordTrackVC: UIViewController {
          If the `BreadcrumbPath` model object determines that the current location moves far enough from the previous location,
          use the returned updateRect to redraw just the changed area.
         */
-        let result = breadcrumbs.addLocation(newLocation)
+        let result = breadcrumbs.addLocation(newLocation, isRecording: true)
         
         /**
          If the `BreadcrumbPath` model object sucessfully adds the location to the path,

@@ -50,6 +50,19 @@ class TrackDetailVC: UIViewController {
         mapView.setVisibleMapRect(trackPolyline.boundingMapRect, edgePadding: standardPadding, animated: false)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "startRace" {
+            if let raceVC = segue.destination as? RaceVC {
+                raceVC.coordinatesOfRank1 = track!.path.map { path in
+                    let latitude = path["latitude"]
+                    let longitude = path["longitude"]
+                    return CLLocation(latitude: latitude!, longitude: longitude!)
+                }
+                raceVC.timestampsOfRank1 = track!.path.map { $0["timestamp"]! }
+            }
+        }
+    }
+    
 }
 
 extension TrackDetailVC: MKMapViewDelegate {
