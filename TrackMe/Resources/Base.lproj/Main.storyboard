@@ -416,6 +416,20 @@
                                     <constraint firstItem="a9Q-VK-gRo" firstAttribute="leading" secondItem="GXt-zq-sSa" secondAttribute="leading" id="sFS-ym-q7z"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1c-Ph-sgh" userLabel="Counter">
+                                <rect key="frame" x="121.24615384621916" y="351.58461538461017" width="150.00000000009936" height="149.9999999999751"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="75"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="P36-QO-oIy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -428,6 +442,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="rTs-bD-kMG"/>
                     <connections>
+                        <outlet property="counterView" destination="L1c-Ph-sgh" id="8TH-TN-eO1"/>
                         <outlet property="distanceView" destination="uZP-fP-XZY" id="QhZ-gE-0RM"/>
                         <outlet property="mapView" destination="vq5-e2-1QQ" id="uGp-XP-dkG"/>
                         <outlet property="timeView" destination="DQi-kc-I4c" id="pnz-BF-Wgh"/>
@@ -443,6 +458,9 @@
         <image name="record.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -37,11 +37,15 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     var previousLocation: CLLocation?
     var totalDistance: CLLocationDistance = 0.0
     
+    var firstCount = 5
+    var counterTimer: Timer?
+    
     let locationManager = CLLocationManager()
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var timeView: UILabel!
     @IBOutlet weak var distanceView: UILabel!
+    @IBOutlet weak var counterView: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,16 +64,26 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
         pathOfRank1 = BreadcrumbPath()
         mapView.addOverlay(pathOfRank1, level: .aboveRoads)
         
+        counterTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            guard self.firstCount > 0 else {
+                self.counterTimer!.invalidate()
+                self.counterView.isHidden = true
+                return
+            }
+            self.counterView.text = String(self.firstCount)
+            self.firstCount -= Int(timer.timeInterval)
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             self.recordTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
                 self.locationManager.startUpdatingLocation()
-                self.elapsedTime += timer.timeInterval
                 
                 let hours = Int(self.elapsedTime) / 3600
                 let minutes = (Int(self.elapsedTime) % 3600) / 60
                 let seconds = Int(self.elapsedTime) % 60
-                
                 self.timeView.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+                
+                self.elapsedTime += timer.timeInterval
             }
             self.simulateRank1()
         }
