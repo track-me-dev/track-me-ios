@@ -20,12 +20,14 @@ class BreadcrumbPath: NSObject, MKOverlay {
     private struct BreadcrumbData {
         /// The locations in the breadcrumb path.
         var locations: [CLLocation]
-     
+        
+        var distance: CLLocationDistance
         /// The backing storage for the path bounds.
         var bounds: MKMapRect
         
-        init(locations: [CLLocation] = [CLLocation](), pathBounds: MKMapRect = MKMapRect.world) {
+        init(locations: [CLLocation] = [CLLocation](), distance: CLLocationDistance = 0, pathBounds: MKMapRect = MKMapRect.world) {
             self.locations = locations
+            self.distance = distance
             self.bounds = pathBounds
         }
     }
@@ -72,6 +74,12 @@ class BreadcrumbPath: NSObject, MKOverlay {
             return breadcrumbData.locations
         }
     }
+    
+    var distance: Double {
+        return protectedBreadcrumbData.withLock { breadcrumbData in
+            return breadcrumbData.distance
+        }
+    }
 
     /**
      Adds a new location to the crumb path.
@@ -113,6 +121,7 @@ class BreadcrumbPath: NSObject, MKOverlay {
                 previousLocation = newLocation
             }
             
+            breadcrumbData.distance += previousLocation!.distance(from: newLocation)
             breadcrumbData.locations.append(newLocation)
             
             // Compute the `MKMapRect` bounding the most recent location, and the new location.

@@ -104,7 +104,7 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
                 
                 // 목적지 도착
                 if coordinatesOfRank1!.last!.distance(from: newLocation)
-                    <= newLocation.distance(from: previousLocation) {
+                    <= newLocation.distance(from: previousLocation && totalDistance ) {
                     showSubmitView()
                 }
             }
