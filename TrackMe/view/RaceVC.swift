@@ -54,6 +54,8 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
         mapTrackingButton.customView = MKUserTrackingButton(mapView: mapView)
         mapView.delegate = self
         mapView.userTrackingMode = .follow
+        showDestinationMarker()
+        
         setupLocationManager()
         
         // Remove the existing path because the app is starting to record a new path.
@@ -79,12 +81,7 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             self.recordTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
                 self.locationManager.startUpdatingLocation()
-                
-                let hours = Int(self.elapsedTime) / 3600
-                let minutes = (Int(self.elapsedTime) % 3600) / 60
-                let seconds = Int(self.elapsedTime) % 60
-                self.timeView.text = String(format: "%02d:%02d:%02d", hours, minutes, seconds)
-                
+                self.timeView.text = self.formatElaspsedTime()
                 self.elapsedTime += timer.timeInterval
             }
             self.simulateRank1()
@@ -92,15 +89,46 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
         
     }
     
+    func showDestinationMarker() {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinatesOfRank1!.last!.coordinate
+        mapView.addAnnotation(annotation)
+    }
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let newLocation = locations.last {
             if let previousLocation = previousLocation {
                 let distance = newLocation.distance(from: previousLocation)
                 totalDistance += distance
                 distanceView.text = String(format: "%.2f km", totalDistance / 1000)
+                
+                // 목적지 도착
+                if coordinatesOfRank1!.last!.distance(from: newLocation)
+                    <= newLocation.distance(from: previousLocation) {
+                    showSubmitView()
+                }
             }
             previousLocation = newLocation
         }
+    }
+    
+    func formatElaspsedTime() -> String {
+        let hours = Int(self.elapsedTime) / 3600
+        let minutes = (Int(self.elapsedTime) % 3600) / 60
+        let seconds = Int(self.elapsedTime) % 60
+        return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+    }
+    
+    func showSubmitView() {
+        let submitView = UIAlertController(title: "완주하셨습니다!",
+                                      message: String(format: "나의 기록 : %@", formatElaspsedTime()),
+                                      preferredStyle: .alert)
+        let submit = UIAlertAction(title: "제출", style: .default)
+        let cancel = UIAlertAction(title: "취소", style: .default)
+        submitView.addAction(submit)
+        submitView.addAction(cancel)
+        
+        present(submitView, animated: true, completion: nil)
     }
     
     func setupLocationManager() {
