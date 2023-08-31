@@ -84,7 +84,7 @@ extension RecordTrackVC {
                 let timestamp = location.timestamp.timeIntervalSince(startTime!)
                 return ["latitude":coord.latitude, "longitude":coord.longitude, "timestamp": timestamp]
             },
-            "distance" : breadcrumbs.locations.first!.distance(from: breadcrumbs.locations.last!),
+            "distance" : breadcrumbs.distance,
             "trackRecord" : [
                 "time" : recordTime
             ]
