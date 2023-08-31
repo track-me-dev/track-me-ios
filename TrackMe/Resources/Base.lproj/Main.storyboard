@@ -440,10 +440,14 @@
                             <constraint firstAttribute="trailing" secondItem="GXt-zq-sSa" secondAttribute="trailing" id="Vjw-8j-Ofx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="rTs-bD-kMG"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="rTs-bD-kMG">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="Y2d-AB-42R" userLabel="Map Tracking Button"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="counterView" destination="L1c-Ph-sgh" id="8TH-TN-eO1"/>
                         <outlet property="distanceView" destination="uZP-fP-XZY" id="QhZ-gE-0RM"/>
+                        <outlet property="mapTrackingButton" destination="Y2d-AB-42R" id="xsE-3r-7a8"/>
                         <outlet property="mapView" destination="vq5-e2-1QQ" id="uGp-XP-dkG"/>
                         <outlet property="timeView" destination="DQi-kc-I4c" id="pnz-BF-Wgh"/>
                     </connections>

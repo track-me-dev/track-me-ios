@@ -46,10 +46,12 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var timeView: UILabel!
     @IBOutlet weak var distanceView: UILabel!
     @IBOutlet weak var counterView: UILabel!
+    @IBOutlet weak var mapTrackingButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapTrackingButton.customView = MKUserTrackingButton(mapView: mapView)
         mapView.delegate = self
         mapView.userTrackingMode = .follow
         setupLocationManager()
