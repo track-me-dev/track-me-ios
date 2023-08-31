@@ -36,6 +36,7 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     var elapsedTime: TimeInterval = 0
     var previousLocation: CLLocation?
     var totalDistance: CLLocationDistance = 0.0
+    var trackDistance: CLLocationDistance!
     
     var firstCount = 5
     var counterTimer: Timer?
@@ -102,9 +103,9 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
                 totalDistance += distance
                 distanceView.text = String(format: "%.2f km", totalDistance / 1000)
                 
-                // 목적지 도착
+                // 목적지 도착 -> 1. 현재 위치가 목적지에 근접해 있는지 확인 / 2. 주행 거리와 트랙 거리의 차이가 1.0 m 이내인지 확인
                 if coordinatesOfRank1!.last!.distance(from: newLocation)
-                    <= newLocation.distance(from: previousLocation && totalDistance ) {
+                    <= newLocation.distance(from: previousLocation) && trackDistance - totalDistance <= 1.0 {
                     showSubmitView()
                 }
             }

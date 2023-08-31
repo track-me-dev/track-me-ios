@@ -12,7 +12,7 @@ class TrackDetailVC: UIViewController {
     
     let standardPadding = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
     
-    var track: Track? = nil
+    var track: Track?
     var trackPolyline: MKPolyline! {
         var locations: [CLLocationCoordinate2D] = []
         track!.path.forEach { coord in
@@ -59,6 +59,7 @@ class TrackDetailVC: UIViewController {
                     return CLLocation(latitude: latitude!, longitude: longitude!)
                 }
                 raceVC.timestampsOfRank1 = track!.path.map { $0["timestamp"]! }
+                raceVC.trackDistance = track!.distance
             }
         }
     }
