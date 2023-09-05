@@ -53,12 +53,13 @@ class TrackDetailVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "startRace" {
             if let raceVC = segue.destination as? RaceVC {
+                raceVC.trackId = track!.id
                 raceVC.coordinatesOfRank1 = track!.path.map { path in
                     let latitude = path["latitude"]
                     let longitude = path["longitude"]
                     return CLLocation(latitude: latitude!, longitude: longitude!)
                 }
-                raceVC.timestampsOfRank1 = track!.path.map { $0["timestamp"]! }
+                raceVC.elapsedTimesOfRank1 = track!.path.map { $0["elapsedTime"]! }
                 raceVC.trackDistance = track!.distance
             }
         }

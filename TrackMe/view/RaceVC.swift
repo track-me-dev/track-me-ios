@@ -8,8 +8,11 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Alamofire
 
 class RaceVC: UIViewController, CLLocationManagerDelegate {
+    
+    var trackId: CLong!
     
     var pathOfRank1: BreadcrumbPath!
     var breadcrumbPathRenderer: BreadcrumbPathRenderer?
@@ -26,7 +29,7 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     var breadcrumbBoundingPolygon: MKPolygon?
     
     var coordinatesOfRank1: [CLLocation]?
-    var timestampsOfRank1: [Double]?
+    var elapsedTimesOfRank1: [Double]?
     var coordIndex: Int?
     var counter: Int?
     var timeInterval: Double?
@@ -37,9 +40,12 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     var previousLocation: CLLocation?
     var totalDistance: CLLocationDistance = 0.0
     var trackDistance: CLLocationDistance!
+    var currentPath: BreadcrumbPath!
     
     var firstCount = 5
     var counterTimer: Timer?
+    
+    var modalViewPresented = false
     
     let locationManager = CLLocationManager()
     
@@ -59,15 +65,15 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
         
         setupLocationManager()
         
-        // Remove the existing path because the app is starting to record a new path.
         if let pathOfRank1 {
             mapView.removeOverlay(pathOfRank1)
             breadcrumbPathRenderer = nil
         }
         
-        // Create a fresh path when starting to record the locations.
         pathOfRank1 = BreadcrumbPath()
         mapView.addOverlay(pathOfRank1, level: .aboveRoads)
+        
+        currentPath = BreadcrumbPath()
         
         counterTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             guard self.firstCount > 0 else {
@@ -97,15 +103,20 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        for location in locations {
+            currentPath.addLocation(location, isRecording: false)
+        }
         if let newLocation = locations.last {
             if let previousLocation = previousLocation {
                 let distance = newLocation.distance(from: previousLocation)
                 totalDistance += distance
                 distanceView.text = String(format: "%.2f km", totalDistance / 1000)
                 
-                // 목적지 도착 -> 1. 현재 위치가 목적지에 근접해 있는지 확인 / 2. 주행 거리와 트랙 거리의 차이가 1.0 m 이내인지 확인
+                // 목적지 도착 -> 1. 현재 위치가 목적지에 근접해 있는지 확인 / 2. 주행 거리와 트랙 거리의 차이가 {특정 거리} 이내인지 확인
+                // TODO: (trackDistance - totalDistance) 값을 검증할 때 오차 범위 정하기
                 if coordinatesOfRank1!.last!.distance(from: newLocation)
-                    <= newLocation.distance(from: previousLocation) && trackDistance - totalDistance <= 1.0 {
+                    <=  50.0 && trackDistance - totalDistance <= 50.0
+                    && !modalViewPresented {
                     showSubmitView()
                 }
             }
@@ -121,15 +132,58 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     }
     
     func showSubmitView() {
-        let submitView = UIAlertController(title: "완주하셨습니다!",
-                                      message: String(format: "나의 기록 : %@", formatElaspsedTime()),
-                                      preferredStyle: .alert)
-        let submit = UIAlertAction(title: "제출", style: .default)
-        let cancel = UIAlertAction(title: "취소", style: .default)
-        submitView.addAction(submit)
-        submitView.addAction(cancel)
+        DispatchQueue.main.async {
+            let submitView = UIAlertController(title: "완주하셨습니다!",
+                                               message: String(format: "나의 기록 : %@", self.formatElaspsedTime()),
+                                               preferredStyle: .alert)
+            let submit = UIAlertAction(title: "제출", style: .default) { submitAction in
+                self.transferRecord()
+            }
+            let cancel = UIAlertAction(title: "취소", style: .default)
+            submitView.addAction(submit)
+            submitView.addAction(cancel)
+            
+            self.present(submitView, animated: true, completion: nil)
+            
+            self.modalViewPresented = true
+        }
+    }
+    
+    func transferRecord() {
+        // [http 요청 헤더 지정]
+        let header : HTTPHeaders = [
+            "Content-Type" : "application/json"
+        ]
         
-        present(submitView, animated: true, completion: nil)
+        
+        let referncedTime = currentPath.locations.first!.timestamp
+        // [http 요청 파라미터 지정 실시]
+        let bodyData : Parameters = [
+            "path" : currentPath.locations.map { location in
+                let coord = location.coordinate
+                let elapsedTime = location.timestamp.timeIntervalSince(referncedTime)
+                return ["latitude":coord.latitude, "longitude":coord.longitude, "elapsedTime": elapsedTime]
+            },
+            "distance" : currentPath.distance,
+            "time": elapsedTime
+        ]
+        
+        AF.request(String(format: "http://localhost:8080/tracks/%d/records", trackId),
+                   method: .post,
+                   parameters: bodyData, // [전송 데이터]
+                   encoding: JSONEncoding.default, // [인코딩 스타일]
+                   headers: header // [헤더 지정]
+        )
+        .validate(statusCode: 200..<300)
+        .responseData { response in
+            switch response.result {
+            case .success(_):
+                print("record saved")
+            case .failure(let error):
+                print(error)
+                break;
+            }
+        }
     }
     
     func setupLocationManager() {
@@ -140,12 +194,12 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     
     func simulateRank1() {
         
-        var minInterval = (timestampsOfRank1?.last)! - (timestampsOfRank1?.first)!
-        for i in 0..<timestampsOfRank1!.count - 1 {
-            minInterval = min(minInterval, timestampsOfRank1![i + 1] - timestampsOfRank1![i])
+        var minInterval = (elapsedTimesOfRank1?.last)! - (elapsedTimesOfRank1?.first)!
+        for i in 0..<elapsedTimesOfRank1!.count - 1 {
+            minInterval = min(minInterval, elapsedTimesOfRank1![i + 1] - elapsedTimesOfRank1![i])
         }
         timeInterval = minInterval / 10
-        let activateIndex = timestampsOfRank1?.map { Int(($0 - (timestampsOfRank1?.first)!) / timeInterval!) }
+        let activateIndex = elapsedTimesOfRank1?.map { Int(($0 - (elapsedTimesOfRank1?.first)!) / timeInterval!) }
         
         coordIndex = 0
         counter = 0
@@ -167,53 +221,20 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     }
     
     func displayNewBreadcrumbOnMap(_ newLocation: CLLocation) {
-        /**
-         If the `BreadcrumbPath` model object determines that the current location moves far enough from the previous location,
-         use the returned updateRect to redraw just the changed area.
-         */
         let result = pathOfRank1.addLocation(newLocation, isRecording: false)
         
-        /**
-         If the `BreadcrumbPath` model object sucessfully adds the location to the path,
-         update the rendering of the path to include the new location.
-         */
         if result.locationAdded {
             // Compute the currently visible map zoom scale.
             let currentZoomScale = mapView.bounds.size.width / mapView.visibleMapRect.size.width
             
-            /**
-             Find out the line width at this zoom scale and outset the `pathBounds` by that amount to ensure the full line width draws.
-             This covers situations where the new location is right on the edge of the provided `pathBounds`, and only part of the line width
-             is within the bounds.
-             */
             let lineWidth = MKRoadWidthAtZoomScale(currentZoomScale)
             var areaToRedisplay = pathOfRank1.pathBounds
             areaToRedisplay = areaToRedisplay.insetBy(dx: -lineWidth, dy: -lineWidth)
             
-            /**
-             Tell the overlay view to update just the changed area, including the area that the line width covers.
-             Use `setNeedsDisplay(_:)` to only redraw the changed area of a breadcrumb overlay. For this sample,
-             the changed area includes the entire overlay because if the app was recently in the background, the breadcrumb path
-             that's visible when the app returns to the foreground might change significantly.
-             
-             In general, avoid calling `setNeedsDisplay()` on the overlay renderer without a map rectangle, as that may cause a render
-             pass for the entire visible map, only some of which may contain updated data in the overlay.
-             
-             To avoid an expensive operation, call `setNeedsDisplay(_:)` instead of removing the overlay from the map and then immediately
-             adding it back to trigger a render pass when the data is changing often. The rendering of an overlay after adding it to the
-             map is not instantaneous, so removing and adding an overlay may cause a visual flicker as the system updates the map view
-             without the overlay, and then updates it again with the overlay. This is especially true if the map is displaying more than
-             one overlay or updating the overlay data often, such as on each location update.
-             */
             breadcrumbPathRenderer?.setNeedsDisplay(areaToRedisplay)
         }
         
         if result.boundingRectChanged {
-            /**
-             When adding a location, the new location sometimes falls outside of the existing bounding area for the path,
-             and the `breadcrumbs` object expands the bounding area to include the new location. When this happens, the app
-             needs to recreate the bounds overlay.
-             */
             updateBreadcrumbBoundsOverlay()
         }
     }

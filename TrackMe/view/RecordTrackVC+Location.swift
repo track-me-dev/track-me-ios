@@ -52,42 +52,79 @@ extension RecordTrackVC {
         /// to show a map of the update history means that updates don't pause.
         locationManager.pausesLocationUpdatesAutomatically = false
         
+        // TODO: 5초 후의 업데이트 정보만 저장하도록 수정
         /// Start tracking the user's location.
         locationManager.startUpdatingLocation()
        
         isMonitoringLocation = true
         
-        // 5초 후에 기록 측정 시작
-        startTime = Date(timeIntervalSinceNow: 5)
     }
     
     /// Stop receiving location updates from Core Location.
     func stopRecordingLocation() {
-        // 기록 종료
-        recordTime = Date().timeIntervalSince(startTime!)
         
         isMonitoringLocation = false
         
         locationManager.stopUpdatingLocation()
         tearDownAudioPlayer()
         
+        showTitleInputModal()
+    }
+    
+    private func showTitleInputModal() {
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Enter Title", message: nil, preferredStyle: .alert)
+            alertController.addTextField { textField in
+                textField.placeholder = "트랙명을 입력하세요."
+            }
+            
+            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                if let text = alertController.textFields?.first?.text, !text.isEmpty {
+                    self.trackTitle = text
+                    self.tranferNewTrack()
+                } else {
+                    alertController.message = "트랙명을 반드시 입력해야 합니다."
+
+                    // Keep the UIAlertController open (no action needed here)
+                    // You can add additional actions if desired
+
+                    // Ensure the UIAlertController is still presented
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            
+            alertController.addAction(okAction)
+            alertController.addAction(cancelAction)
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    private func tranferNewTrack() {
         // [http 요청 헤더 지정]
         let header : HTTPHeaders = [
             "Content-Type" : "application/json"
         ]
         
+        let startTime = breadcrumbs.locations.first!.timestamp
+        let elapsedTime = breadcrumbs.locations.last!.timestamp.timeIntervalSince(startTime)
+        let path = breadcrumbs.locations.map { location in
+            let coord = location.coordinate
+            let elapsedTime = location.timestamp.timeIntervalSince(startTime)
+            return ["latitude":coord.latitude, "longitude":coord.longitude, "elapsedTime": elapsedTime]
+        }
+        
         // [http 요청 파라미터 지정 실시]
         let bodyData : Parameters = [
-            "title" : "test",
-            "path" : breadcrumbs.locations.map { location in
-                let coord = location.coordinate
-                let timestamp = location.timestamp.timeIntervalSince(startTime!)
-                return ["latitude":coord.latitude, "longitude":coord.longitude, "timestamp": timestamp]
-            },
+            "title" : trackTitle!,
+            "path" : path,
             "distance" : breadcrumbs.distance,
             "trackRecord" : [
-                "time" : recordTime
-            ]
+                "path" : path,
+                "distance" : breadcrumbs.distance,
+                "time" : elapsedTime
+            ] as [String : Any]
         ]
         
         AF.request("http://localhost:8080/tracks",
