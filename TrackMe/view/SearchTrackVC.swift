@@ -14,7 +14,7 @@ class SearchTrackVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tracks: [Track] = []
+    var tracks: [SearchTrackResponse] = []
     
     override func viewDidLoad() {
         tableView.delegate = self
@@ -26,7 +26,7 @@ class SearchTrackVC: UIViewController {
                 switch response.result {
                 case .success(let value):
                     do {
-                        let result = try JSONDecoder().decode([Track].self, from: value!)
+                        let result = try JSONDecoder().decode([SearchTrackResponse].self, from: value!)
                         DispatchQueue.main.async {
                             self.tracks = result
                             self.tableView.reloadData()
@@ -68,7 +68,7 @@ extension SearchTrackVC: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? TrackDetailVC {
             let track = tracks[(tableView.indexPathForSelectedRow?.row)!]
-            destination.track = track
+            destination.requestUrl += "/\(track.id)"
         }
     }
     

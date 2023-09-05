@@ -136,12 +136,9 @@ extension RecordTrackVC {
         .validate(statusCode: 200..<300)
         .responseData { response in
             switch response.result {
-            case .success(let value):
-                do {
-                    let result = try JSONDecoder().decode(Track.self, from: value)
-                } catch {
-                    print(error)
-                }
+            case .success(_):
+                print("new track created!")
+                break;
             case .failure(let error):
                 print(error)
                 break;
