@@ -50,10 +50,13 @@ extension SearchTrackVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrackListCell", for: indexPath)
-        cell.textLabel?.text = tracks[indexPath.row].title
+        let track = tracks[indexPath.row]
+        cell.textLabel?.text = track.title
+        cell.detailTextLabel?.text = String(format: "주행 거리: %.2fkm, 평균 경사도: %.1f%",
+                                            track.distance / 1000,
+                                            track.averageSlope!)
         return cell
     }
-    
 }
 
 extension SearchTrackVC: UITableViewDelegate {
