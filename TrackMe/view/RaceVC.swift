@@ -73,8 +73,6 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
         pathOfRank1 = BreadcrumbPath()
         mapView.addOverlay(pathOfRank1, level: .aboveRoads)
         
-        currentPath = BreadcrumbPath()
-        
         counterTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             guard self.firstCount > 0 else {
                 self.counterTimer!.invalidate()
@@ -86,14 +84,14 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            self.currentPath = BreadcrumbPath()
+            self.locationManager.startUpdatingLocation()
             self.recordTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
-                self.locationManager.startUpdatingLocation()
                 self.timeView.text = self.formatElaspsedTime()
                 self.elapsedTime += timer.timeInterval
             }
             self.simulateRank1()
         }
-        
     }
     
     func showDestinationMarker() {
@@ -117,7 +115,8 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
                 if coordinatesOfRank1!.last!.distance(from: newLocation)
                     <=  50.0 && trackDistance - totalDistance <= 50.0
                     && !modalViewPresented {
-                    showSubmitView()
+                    locationManager.stopUpdatingLocation()
+                    showSubmitView(time: elapsedTime)
                 }
             }
             previousLocation = newLocation
@@ -131,13 +130,13 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
     
-    func showSubmitView() {
+    func showSubmitView(time: Double) {
         DispatchQueue.main.async {
             let submitView = UIAlertController(title: "완주하셨습니다!",
                                                message: String(format: "나의 기록 : %@", self.formatElaspsedTime()),
                                                preferredStyle: .alert)
             let submit = UIAlertAction(title: "제출", style: .default) { submitAction in
-                self.transferRecord()
+                self.transferRecord(time: time)
             }
             let cancel = UIAlertAction(title: "취소", style: .default)
             submitView.addAction(submit)
@@ -149,7 +148,7 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    func transferRecord() {
+    func transferRecord(time: Double) {
         // [http 요청 헤더 지정]
         let header : HTTPHeaders = [
             "Content-Type" : "application/json"
@@ -165,7 +164,7 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
                 return ["latitude":coord.latitude, "longitude":coord.longitude, "elapsedTime": elapsedTime]
             },
             "distance" : currentPath.distance,
-            "time": elapsedTime
+            "time": time
         ]
         
         AF.request(String(format: "http://localhost:8080/tracks/%d/records", trackId),
@@ -189,7 +188,6 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     func setupLocationManager() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        locationManager.allowsBackgroundLocationUpdates = true
     }
     
     func simulateRank1() {

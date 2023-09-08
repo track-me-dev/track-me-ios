@@ -132,7 +132,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackListCell" textLabel="80K-gc-wxH" detailTextLabel="vYr-Um-ipc" style="IBUITableViewCellStyleSubtitle" id="eJH-Do-pet">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackListCell" textLabel="80K-gc-wxH" detailTextLabel="vYr-Um-ipc" style="IBUITableViewCellStyleSubtitle" id="eJH-Do-pet">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eJH-Do-pet" id="D3X-ab-SMN">
@@ -297,6 +297,9 @@
                                                 <rect key="frame" x="305.66666666666669" y="0.0" width="87.333333333333314" height="55.666666666666664"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="gray" title="전체 순위"/>
+                                                <connections>
+                                                    <segue destination="uf0-4o-YxP" kind="show" identifier="totalRank" id="NbY-Qe-9x5"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -498,7 +501,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6o-Ye-5IP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3306" y="458"/>
+            <point key="canvasLocation" x="3331" y="104"/>
+        </scene>
+        <!--RankingVC-->
+        <scene sceneID="p2h-ia-Kng">
+            <objects>
+                <viewController id="uf0-4o-YxP" userLabel="RankingVC" customClass="RankingVC" customModule="TrackMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fsG-4x-z2x">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7o-g4-g85">
+                                <rect key="frame" x="0.0" y="103" width="393" height="36"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="q1q-P3-lty">
+                                <rect key="frame" x="0.0" y="139" width="393" height="679"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rankingCell" id="eml-8j-sV1">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eml-8j-sV1" id="vTL-MD-M7j">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="e1y-yD-MAC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="M7o-g4-g85" firstAttribute="top" secondItem="e1y-yD-MAC" secondAttribute="top" id="Gaz-Zk-SYv"/>
+                            <constraint firstAttribute="trailing" secondItem="M7o-g4-g85" secondAttribute="trailing" id="Ht1-pQ-9BD"/>
+                            <constraint firstItem="q1q-P3-lty" firstAttribute="top" secondItem="M7o-g4-g85" secondAttribute="bottom" id="IV4-xE-bDO"/>
+                            <constraint firstItem="q1q-P3-lty" firstAttribute="leading" secondItem="e1y-yD-MAC" secondAttribute="leading" id="kdW-8B-NFC"/>
+                            <constraint firstItem="M7o-g4-g85" firstAttribute="leading" secondItem="fsG-4x-z2x" secondAttribute="leading" id="nd4-qs-yqa"/>
+                            <constraint firstItem="e1y-yD-MAC" firstAttribute="bottom" secondItem="q1q-P3-lty" secondAttribute="bottom" id="uZa-TQ-Vmq"/>
+                            <constraint firstItem="e1y-yD-MAC" firstAttribute="trailing" secondItem="q1q-P3-lty" secondAttribute="trailing" id="v7O-uH-J3S"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="aHl-TI-VQD"/>
+                    <connections>
+                        <outlet property="tableView" destination="q1q-P3-lty" id="4Zg-4P-lB6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wFd-lQ-S8l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3331" y="786"/>
         </scene>
     </scenes>
     <resources>

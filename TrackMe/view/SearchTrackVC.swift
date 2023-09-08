@@ -49,7 +49,7 @@ extension SearchTrackVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trackListCell", for: indexPath)
         let track = tracks[indexPath.row]
         cell.textLabel?.text = track.title
         cell.detailTextLabel?.text = String(format: "주행 거리: %.2fkm, 평균 경사도: %.1f%",
@@ -66,9 +66,9 @@ extension SearchTrackVC: UITableViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? TrackDetailVC {
+        if let trackDetailVC = segue.destination as? TrackDetailVC {
             let track = tracks[(tableView.indexPathForSelectedRow?.row)!]
-            destination.requestUrl += "/\(track.id)"
+            trackDetailVC.trackId = track.id
         }
     }
     

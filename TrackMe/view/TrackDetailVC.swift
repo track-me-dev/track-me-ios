@@ -13,8 +13,11 @@ class TrackDetailVC: UIViewController {
     
     let standardPadding = UIEdgeInsets(top: 100, left: 100, bottom: 100, right: 100)
     
+    var trackId: CLong!
     var track: TrackDetailResponse?
-    var requestUrl = "http://localhost:8080/tracks"
+    var retrieveTrackUrl: String {
+        return "http://localhost:8080/tracks/\(Int(self.trackId))"
+    }
     var trackPolyline: MKPolyline!
     
     @IBOutlet weak var mapView: MKMapView!
@@ -53,11 +56,15 @@ class TrackDetailVC: UIViewController {
                 raceVC.elapsedTimesOfRank1 = track!.path.map { $0["elapsedTime"]! }
                 raceVC.trackDistance = track!.distance
             }
+        } else if segue.identifier == "totalRank" {
+            if let rankingVC = segue.destination as? RankingVC {
+                rankingVC.trackId = track?.id
+            }
         }
     }
     
     private func initTrack() {
-        AF.request(requestUrl, method: .get)
+        AF.request(retrieveTrackUrl, method: .get)
             .validate(statusCode: 200..<300)
             .response { response in
                 switch response.result {
@@ -104,6 +111,7 @@ class TrackDetailVC: UIViewController {
         let seconds = Int(track!.rank1stTime) % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
+    
     
 }
 
