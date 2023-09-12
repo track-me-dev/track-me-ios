@@ -21,12 +21,18 @@
 		DD057E9A2A8BA62400BA55BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E992A8BA62400BA55BD /* SceneDelegate.swift */; };
 		DD057E9C2A8BAB9C00BA55BD /* SearchTrackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E9B2A8BAB9C00BA55BD /* SearchTrackVC.swift */; };
 		DD057E9E2A8BABD500BA55BD /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E9D2A8BABD500BA55BD /* MainVC.swift */; };
-		DD057EA02A8BB2F300BA55BD /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E9F2A8BB2F300BA55BD /* Track.swift */; };
+		DD057EA02A8BB2F300BA55BD /* SearchTrackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057E9F2A8BB2F300BA55BD /* SearchTrackResponse.swift */; };
 		DD057EA22A8C6F9600BA55BD /* TrackDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057EA12A8C6F9500BA55BD /* TrackDetailVC.swift */; };
 		DD057EA42A8CBFEA00BA55BD /* TrackUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057EA32A8CBFEA00BA55BD /* TrackUtils.swift */; };
 		DD057EA72A8CC3AC00BA55BD /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = DD057EA62A8CC3AC00BA55BD /* SWXMLHash */; };
 		DD057EAA2A8DFFAD00BA55BD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DD057EA92A8DFFAD00BA55BD /* Alamofire */; };
 		DD057EB52A8F608400BA55BD /* RaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057EB42A8F608400BA55BD /* RaceVC.swift */; };
+		DDD054032AA1FE740093D9FE /* tancheon02.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DDD054012AA1FE740093D9FE /* tancheon02.gpx */; };
+		DDD054042AA1FE740093D9FE /* tancheon01.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DDD054022AA1FE740093D9FE /* tancheon01.gpx */; };
+		DDD054082AA770E60093D9FE /* TrackRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD054072AA770E60093D9FE /* TrackRecord.swift */; };
+		DDD0540A2AA78F2D0093D9FE /* TrackDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD054092AA78F2D0093D9FE /* TrackDetailResponse.swift */; };
+		DDD0540C2AAAA8EF0093D9FE /* RankingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0540B2AAAA8EF0093D9FE /* RankingVC.swift */; };
+		DDD0540E2AAAB0000093D9FE /* TrackRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD0540D2AAAB0000093D9FE /* TrackRecordResponse.swift */; };
 		DDF66FA22A8FD4AF00A5C515 /* track-test2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DDF66FA12A8FD4AF00A5C515 /* track-test2.gpx */; };
 		DDF66FA62A9468AE00A5C515 /* track-test3.gpx in Resources */ = {isa = PBXBuildFile; fileRef = DDF66FA52A9468AE00A5C515 /* track-test3.gpx */; };
 /* End PBXBuildFile section */
@@ -48,10 +54,16 @@
 		DD057E992A8BA62400BA55BD /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = "../../../../practice/ios-tutorial/DisplayingAnUpdatingPathOfAUsersLocationHistory/TravelHistory/SceneDelegate.swift"; sourceTree = "<group>"; };
 		DD057E9B2A8BAB9C00BA55BD /* SearchTrackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackVC.swift; sourceTree = "<group>"; };
 		DD057E9D2A8BABD500BA55BD /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		DD057E9F2A8BB2F300BA55BD /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		DD057E9F2A8BB2F300BA55BD /* SearchTrackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackResponse.swift; sourceTree = "<group>"; };
 		DD057EA12A8C6F9500BA55BD /* TrackDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailVC.swift; sourceTree = "<group>"; };
 		DD057EA32A8CBFEA00BA55BD /* TrackUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackUtils.swift; sourceTree = "<group>"; };
 		DD057EB42A8F608400BA55BD /* RaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceVC.swift; sourceTree = "<group>"; };
+		DDD054012AA1FE740093D9FE /* tancheon02.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tancheon02.gpx; sourceTree = "<group>"; };
+		DDD054022AA1FE740093D9FE /* tancheon01.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = tancheon01.gpx; sourceTree = "<group>"; };
+		DDD054072AA770E60093D9FE /* TrackRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRecord.swift; sourceTree = "<group>"; };
+		DDD054092AA78F2D0093D9FE /* TrackDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailResponse.swift; sourceTree = "<group>"; };
+		DDD0540B2AAAA8EF0093D9FE /* RankingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingVC.swift; sourceTree = "<group>"; };
+		DDD0540D2AAAB0000093D9FE /* TrackRecordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRecordResponse.swift; sourceTree = "<group>"; };
 		DDF66FA12A8FD4AF00A5C515 /* track-test2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "track-test2.gpx"; sourceTree = "<group>"; };
 		DDF66FA52A9468AE00A5C515 /* track-test3.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "track-test3.gpx"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +120,8 @@
 				DD057E912A8BA55700BA55BD /* track-test.gpx */,
 				DDF66FA12A8FD4AF00A5C515 /* track-test2.gpx */,
 				DDF66FA52A9468AE00A5C515 /* track-test3.gpx */,
+				DDD054022AA1FE740093D9FE /* tancheon01.gpx */,
+				DDD054012AA1FE740093D9FE /* tancheon02.gpx */,
 				DD057E922A8BA55700BA55BD /* Info.plist */,
 			);
 			path = Resources;
@@ -124,6 +138,7 @@
 				DD057E9B2A8BAB9C00BA55BD /* SearchTrackVC.swift */,
 				DD057EA12A8C6F9500BA55BD /* TrackDetailVC.swift */,
 				DD057EB42A8F608400BA55BD /* RaceVC.swift */,
+				DDD0540B2AAAA8EF0093D9FE /* RankingVC.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -140,7 +155,10 @@
 			isa = PBXGroup;
 			children = (
 				DD057E822A8BA53100BA55BD /* BreadcrumbPath.swift */,
-				DD057E9F2A8BB2F300BA55BD /* Track.swift */,
+				DD057E9F2A8BB2F300BA55BD /* SearchTrackResponse.swift */,
+				DDD054072AA770E60093D9FE /* TrackRecord.swift */,
+				DDD054092AA78F2D0093D9FE /* TrackDetailResponse.swift */,
+				DDD0540D2AAAB0000093D9FE /* TrackRecordResponse.swift */,
 			);
 			path = dto;
 			sourceTree = "<group>";
@@ -222,8 +240,10 @@
 				DDF66FA62A9468AE00A5C515 /* track-test3.gpx in Resources */,
 				DDF66FA22A8FD4AF00A5C515 /* track-test2.gpx in Resources */,
 				DD057E962A8BA55700BA55BD /* Main.storyboard in Resources */,
+				DDD054042AA1FE740093D9FE /* tancheon01.gpx in Resources */,
 				DD057E932A8BA55700BA55BD /* bells.aif in Resources */,
 				DD057E952A8BA55700BA55BD /* LaunchScreen.storyboard in Resources */,
+				DDD054032AA1FE740093D9FE /* tancheon02.gpx in Resources */,
 				DD057E972A8BA55700BA55BD /* track-test.gpx in Resources */,
 				DD057E942A8BA55700BA55BD /* Assets.xcassets in Resources */,
 			);
@@ -237,9 +257,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD057E842A8BA53100BA55BD /* RecordTrackVC+Location.swift in Sources */,
-				DD057EA02A8BB2F300BA55BD /* Track.swift in Sources */,
+				DD057EA02A8BB2F300BA55BD /* SearchTrackResponse.swift in Sources */,
 				DD057E862A8BA53100BA55BD /* RecordTrackVC.swift in Sources */,
+				DDD054082AA770E60093D9FE /* TrackRecord.swift in Sources */,
 				DD057EA42A8CBFEA00BA55BD /* TrackUtils.swift in Sources */,
+				DDD0540E2AAAB0000093D9FE /* TrackRecordResponse.swift in Sources */,
 				DD057E882A8BA53100BA55BD /* BreadcrumbPath.swift in Sources */,
 				DD057EA22A8C6F9600BA55BD /* TrackDetailVC.swift in Sources */,
 				DD057E872A8BA53100BA55BD /* AppDelegate.swift in Sources */,
@@ -248,6 +270,8 @@
 				DD057E9A2A8BA62400BA55BD /* SceneDelegate.swift in Sources */,
 				DD057E9C2A8BAB9C00BA55BD /* SearchTrackVC.swift in Sources */,
 				DD057E9E2A8BABD500BA55BD /* MainVC.swift in Sources */,
+				DDD0540C2AAAA8EF0093D9FE /* RankingVC.swift in Sources */,
+				DDD0540A2AA78F2D0093D9FE /* TrackDetailResponse.swift in Sources */,
 				DD057EB52A8F608400BA55BD /* RaceVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

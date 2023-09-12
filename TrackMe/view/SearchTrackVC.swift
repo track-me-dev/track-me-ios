@@ -14,7 +14,7 @@ class SearchTrackVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var tracks: [Track] = []
+    var tracks: [SearchTrackResponse] = []
     
     override func viewDidLoad() {
         tableView.delegate = self
@@ -26,7 +26,7 @@ class SearchTrackVC: UIViewController {
                 switch response.result {
                 case .success(let value):
                     do {
-                        let result = try JSONDecoder().decode([Track].self, from: value!)
+                        let result = try JSONDecoder().decode([SearchTrackResponse].self, from: value!)
                         DispatchQueue.main.async {
                             self.tracks = result
                             self.tableView.reloadData()
@@ -49,11 +49,14 @@ extension SearchTrackVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackListCell", for: indexPath)
-        cell.textLabel?.text = tracks[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trackListCell", for: indexPath)
+        let track = tracks[indexPath.row]
+        cell.textLabel?.text = track.title
+        cell.detailTextLabel?.text = String(format: "주행 거리: %.2fkm, 평균 경사도: %.1f%",
+                                            track.distance / 1000,
+                                            track.averageSlope!)
         return cell
     }
-    
 }
 
 extension SearchTrackVC: UITableViewDelegate {
@@ -63,9 +66,9 @@ extension SearchTrackVC: UITableViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? TrackDetailVC {
+        if let trackDetailVC = segue.destination as? TrackDetailVC {
             let track = tracks[(tableView.indexPathForSelectedRow?.row)!]
-            destination.track = track
+            trackDetailVC.trackId = track.id
         }
     }
     
