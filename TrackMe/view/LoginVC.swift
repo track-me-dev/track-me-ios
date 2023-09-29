@@ -22,7 +22,7 @@ class LoginVC: UIViewController {
             
             // [http 요청 파라미터 지정 실시]
             let bodyData : Parameters = [
-                "path" : username,
+                "username" : username,
                 "password": password
             ]
             
