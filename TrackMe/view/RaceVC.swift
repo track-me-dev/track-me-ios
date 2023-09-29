@@ -1,10 +1,3 @@
-//
-//  RaceVC.swift
-//  TrackMe
-//
-//  Created by 곽진현 on 2023/08/18.
-//
-
 import UIKit
 import MapKit
 import CoreLocation

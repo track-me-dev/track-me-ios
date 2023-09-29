@@ -1,17 +1,12 @@
-//
-//  LoginVC.swift
-//  TrackMe
-//
-//  Created by 곽진현 on 2023/09/29.
-//
-
 import UIKit
 import Alamofire
+import KeychainSwift
 
 class LoginVC: UIViewController {
     
     @IBOutlet weak var usernameTextFied: UITextField!
     @IBOutlet weak var passwordTexField: UITextField!
+    @IBOutlet weak var failTextField: UITextField!
     
     @IBAction func loginPressed(_ sender: UIButton) {
         if let username = usernameTextFied.text, let password = passwordTexField.text {
@@ -33,11 +28,28 @@ class LoginVC: UIViewController {
                        headers: header // [헤더 지정]
             )
             .validate(statusCode: 200..<300)
-            .responseData { response in
+            .response { response in
                 switch response.result {
-                case .success(_):
-                    print("log in success")
+                case .success(let value):
+                    do {
+                        self.failTextField.isHidden = true
+                        let result = try JSONDecoder().decode(UserTokenResponse.self, from: value!)
+                        let keychain = KeychainSwift()
+                        
+                        keychain.set(result.accessToken, forKey: "trackme_accessToken")
+                        keychain.set(result.accessToken, forKey: "trackme_refreshToken")
+                        let destinationVC = UIStoryboard(name: "Main", bundle: nil)
+                            .instantiateViewController(withIdentifier: "MainViewController") as! MainVC
+                        self.present(destinationVC, animated: true, completion: nil)
+                        print("log in success")
+                    } catch {
+                        print(error)
+                    }
                 case .failure(let error):
+                    DispatchQueue.main.async {
+                        self.failTextField.isHidden = false
+                        self.failTextField.text = "아이디와 비밀번호를 확인해주세요."
+                    }
                     print(error)
                     break;
                 }

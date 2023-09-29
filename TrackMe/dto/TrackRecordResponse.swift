@@ -1,10 +1,3 @@
-//
-//  TrackRecordResponse.swift
-//  TrackMe
-//
-//  Created by 곽진현 on 2023/09/08.
-//
-
 import Foundation
 
 struct TrackRecordResponse: Decodable {

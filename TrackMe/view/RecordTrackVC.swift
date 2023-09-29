@@ -1,10 +1,3 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-The main view controller for the app, which displays the user location along with the path they travel on a map view.
-*/
-
 import AVFoundation
 import CoreLocation
 import Foundation

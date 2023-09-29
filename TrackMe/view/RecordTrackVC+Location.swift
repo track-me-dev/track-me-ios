@@ -1,10 +1,3 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-Manages interactions with Core Location and AVFoundation for reporting when a user's location changes.
-*/
-
 import Alamofire
 import AVFoundation
 import CoreLocation

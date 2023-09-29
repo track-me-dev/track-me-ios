@@ -1,9 +1,3 @@
-//
-//  RankingVC.swift
-//  TrackMe
-//
-//  Created by 곽진현 on 2023/09/08.
-//
 import UIKit
 import Alamofire
 

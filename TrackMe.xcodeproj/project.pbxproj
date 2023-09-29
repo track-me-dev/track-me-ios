@@ -29,6 +29,8 @@
 		DD057EB52A8F608400BA55BD /* RaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD057EB42A8F608400BA55BD /* RaceVC.swift */; };
 		DD4A62C82AC6A87B004CB6D1 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4A62C72AC6A87B004CB6D1 /* LoginVC.swift */; };
 		DD4A62CA2AC6A890004CB6D1 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4A62C92AC6A890004CB6D1 /* SignupVC.swift */; };
+		DD4A62CD2AC6D98E004CB6D1 /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DD4A62CC2AC6D98E004CB6D1 /* KeychainSwift */; };
+		DD4A62CF2AC6DB01004CB6D1 /* UserTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4A62CE2AC6DB01004CB6D1 /* UserTokenResponse.swift */; };
 		DD9F03922AC2D255006EFA6E /* NanumSquareNeo-cBd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD9F038D2AC2D255006EFA6E /* NanumSquareNeo-cBd.ttf */; };
 		DD9F03932AC2D255006EFA6E /* NanumSquareNeo-dEb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD9F038E2AC2D255006EFA6E /* NanumSquareNeo-dEb.ttf */; };
 		DD9F03942AC2D255006EFA6E /* NanumSquareNeo-eHv.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD9F038F2AC2D255006EFA6E /* NanumSquareNeo-eHv.ttf */; };
@@ -68,6 +70,7 @@
 		DD057EB42A8F608400BA55BD /* RaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaceVC.swift; sourceTree = "<group>"; };
 		DD4A62C72AC6A87B004CB6D1 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		DD4A62C92AC6A890004CB6D1 /* SignupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
+		DD4A62CE2AC6DB01004CB6D1 /* UserTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenResponse.swift; sourceTree = "<group>"; };
 		DD9F038D2AC2D255006EFA6E /* NanumSquareNeo-cBd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeo-cBd.ttf"; sourceTree = "<group>"; };
 		DD9F038E2AC2D255006EFA6E /* NanumSquareNeo-dEb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeo-dEb.ttf"; sourceTree = "<group>"; };
 		DD9F038F2AC2D255006EFA6E /* NanumSquareNeo-eHv.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NanumSquareNeo-eHv.ttf"; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD4A62CD2AC6D98E004CB6D1 /* KeychainSwift in Frameworks */,
 				DD057EA72A8CC3AC00BA55BD /* SWXMLHash in Frameworks */,
 				DD057EAA2A8DFFAD00BA55BD /* Alamofire in Frameworks */,
 			);
@@ -179,6 +183,7 @@
 				DDD054072AA770E60093D9FE /* TrackRecord.swift */,
 				DDD054092AA78F2D0093D9FE /* TrackDetailResponse.swift */,
 				DDD0540D2AAAB0000093D9FE /* TrackRecordResponse.swift */,
+				DD4A62CE2AC6DB01004CB6D1 /* UserTokenResponse.swift */,
 			);
 			path = dto;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 			packageProductDependencies = (
 				DD057EA62A8CC3AC00BA55BD /* SWXMLHash */,
 				DD057EA92A8DFFAD00BA55BD /* Alamofire */,
+				DD4A62CC2AC6D98E004CB6D1 /* KeychainSwift */,
 			);
 			productName = TrackMe;
 			productReference = DD057E672A8BA50C00BA55BD /* TrackMe.app */;
@@ -254,6 +260,7 @@
 			packageReferences = (
 				DD057EA52A8CC3AC00BA55BD /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 				DD057EA82A8DFFAD00BA55BD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				DD4A62CB2AC6D98E004CB6D1 /* XCRemoteSwiftPackageReference "keychain-swift" */,
 			);
 			productRefGroup = DD057E682A8BA50C00BA55BD /* Products */;
 			projectDirPath = "";
@@ -311,6 +318,7 @@
 				DD057E9E2A8BABD500BA55BD /* MainVC.swift in Sources */,
 				DD4A62C82AC6A87B004CB6D1 /* LoginVC.swift in Sources */,
 				DDD0540C2AAAA8EF0093D9FE /* RankingVC.swift in Sources */,
+				DD4A62CF2AC6DB01004CB6D1 /* UserTokenResponse.swift in Sources */,
 				DDD0540A2AA78F2D0093D9FE /* TrackDetailResponse.swift in Sources */,
 				DD057EB52A8F608400BA55BD /* RaceVC.swift in Sources */,
 			);
@@ -554,6 +562,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		DD4A62CB2AC6D98E004CB6D1 /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -566,6 +582,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DD057EA82A8DFFAD00BA55BD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		DD4A62CC2AC6D98E004CB6D1 /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DD4A62CB2AC6D98E004CB6D1 /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

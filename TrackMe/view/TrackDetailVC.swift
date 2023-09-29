@@ -1,10 +1,3 @@
-//
-//  TrackDetailViewController.swift
-//  TrackMe
-//
-//  Created by 곽진현 on 2023/08/16.
-//
-
 import UIKit
 import MapKit
 import Alamofire
