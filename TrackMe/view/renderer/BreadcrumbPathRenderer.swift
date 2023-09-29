@@ -1,10 +1,3 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-An overlay renderer that displays a path that changes over time.
-*/
-
 import Foundation
 import MapKit
 

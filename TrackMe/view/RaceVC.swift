@@ -1,14 +1,8 @@
-//
-//  RaceVC.swift
-//  TrackMe
-//
-//  Created by 곽진현 on 2023/08/18.
-//
-
 import UIKit
 import MapKit
 import CoreLocation
 import Alamofire
+import KeychainSwift
 
 class RaceVC: UIViewController, CLLocationManagerDelegate {
     
@@ -150,10 +144,11 @@ class RaceVC: UIViewController, CLLocationManagerDelegate {
     
     func transferRecord(time: Double) {
         // [http 요청 헤더 지정]
+        let keychain = KeychainSwift()
         let header : HTTPHeaders = [
-            "Content-Type" : "application/json"
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer \(keychain.get("trackme_accessToken")!)"
         ]
-        
         
         let referncedTime = currentPath.locations.first!.timestamp
         // [http 요청 파라미터 지정 실시]

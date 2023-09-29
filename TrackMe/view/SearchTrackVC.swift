@@ -1,14 +1,8 @@
-//
-//  TrackListViewController.swift
-//  TrackMe
-//
-//  Created by 곽진현 on 2023/08/15.
-//
-
 import UIKit
 import CoreLocation
 import MapKit
 import Alamofire
+import KeychainSwift
 
 class SearchTrackVC: UIViewController {
     
@@ -20,7 +14,12 @@ class SearchTrackVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        AF.request("http://localhost:8080/tracks", method: .get)
+        let keychain = KeychainSwift()
+        let header : HTTPHeaders = [
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer \(keychain.get("trackme_accessToken")!)"
+        ]
+        AF.request("http://localhost:8080/tracks", method: .get, headers: header)
             .validate(statusCode: 200..<300)
             .response { response in
                 switch response.result {

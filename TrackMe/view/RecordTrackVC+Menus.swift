@@ -1,10 +1,3 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-Provides auxiliary functions for handling UI configuration for menus and toolbar buttons.
-*/
-
 import CoreLocation
 import MapKit
 import UIKit

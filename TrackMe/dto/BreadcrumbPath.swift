@@ -1,10 +1,3 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-A overlay model object representing a path that changes over time.
-*/
-
 import Foundation
 import MapKit
 import os

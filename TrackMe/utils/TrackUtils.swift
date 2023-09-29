@@ -1,10 +1,3 @@
-//
-//  TrackUtils.swift
-//  TrackMe
-//
-//  Created by 곽진현 on 2023/08/16.
-//
-
 import Foundation
 import SWXMLHash
 

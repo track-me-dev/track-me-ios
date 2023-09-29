@@ -4,6 +4,14 @@
 <dict>
 	<key></key>
 	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Resources/TTF/NanumSquareNeo-aLt</string>
+		<string>Resources/TTF/NanumSquareNeo-bRg</string>
+		<string>Resources/TTF/NanumSquareNeo-cBd</string>
+		<string>Resources/TTF/NanumSquareNeo-dEb</string>
+		<string>Resource/TTF/NanumSquareNeo-eHv</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
