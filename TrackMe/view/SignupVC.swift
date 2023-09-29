@@ -39,7 +39,7 @@ class SignupVC: UIViewController {
             .responseData { response in
                 switch response.result {
                 case .success(_):
-                    print("log in success")
+                    print("sign up success")
                 case .failure(let error):
                     print(error)
                     break;

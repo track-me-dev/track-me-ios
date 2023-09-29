@@ -1,7 +1,7 @@
 import Alamofire
 import AVFoundation
 import CoreLocation
-import Foundation
+import KeychainSwift
 import UIKit
 
 extension RecordTrackVC {
@@ -95,9 +95,11 @@ extension RecordTrackVC {
     }
     
     private func tranferNewTrack() {
+        let keychain = KeychainSwift()
         // [http 요청 헤더 지정]
         let header : HTTPHeaders = [
-            "Content-Type" : "application/json"
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer \(keychain.get("trackme_accessToken")!)"
         ]
         
         let startTime = breadcrumbs.locations.first!.timestamp

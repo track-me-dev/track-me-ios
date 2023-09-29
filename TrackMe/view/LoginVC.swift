@@ -5,11 +5,11 @@ import KeychainSwift
 class LoginVC: UIViewController {
     
     @IBOutlet weak var usernameTextFied: UITextField!
-    @IBOutlet weak var passwordTexField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var failTextField: UITextField!
     
     @IBAction func loginPressed(_ sender: UIButton) {
-        if let username = usernameTextFied.text, let password = passwordTexField.text {
+        if let username = usernameTextFied.text, let password = passwordTextField.text {
             // [http 요청 헤더 지정]
             let header : HTTPHeaders = [
                 "Content-Type" : "application/json"
@@ -40,7 +40,8 @@ class LoginVC: UIViewController {
                         keychain.set(result.accessToken, forKey: "trackme_refreshToken")
                         let destinationVC = UIStoryboard(name: "Main", bundle: nil)
                             .instantiateViewController(withIdentifier: "MainViewController") as! MainVC
-                        self.present(destinationVC, animated: true, completion: nil)
+//                        self.present(destinationVC, animated: true, completion: nil)
+                        self.show(destinationVC, sender: nil)
                         print("log in success")
                     } catch {
                         print(error)

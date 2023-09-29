@@ -1,6 +1,7 @@
 import UIKit
 import MapKit
 import Alamofire
+import KeychainSwift
 
 class TrackDetailVC: UIViewController {
     
@@ -57,7 +58,12 @@ class TrackDetailVC: UIViewController {
     }
     
     private func initTrack() {
-        AF.request(retrieveTrackUrl, method: .get)
+        let keychain = KeychainSwift()
+        let header : HTTPHeaders = [
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer \(keychain.get("trackme_accessToken")!)"
+        ]
+        AF.request(retrieveTrackUrl, method: .get, headers: header)
             .validate(statusCode: 200..<300)
             .response { response in
                 switch response.result {

@@ -1,5 +1,6 @@
 import UIKit
 import Alamofire
+import KeychainSwift
 
 class RankingVC: UIViewController {
     
@@ -27,7 +28,14 @@ class RankingVC: UIViewController {
     }
     
     private func requestTrackRecords() {
-        AF.request("http://localhost:8080/tracks/\(Int(trackId))/records?page=\(currentPage)", method: .get)
+        let keychain = KeychainSwift()
+        let header : HTTPHeaders = [
+            "Content-Type" : "application/json",
+            "Authorization" : "Bearer \(keychain.get("trackme_accessToken")!)"
+        ]
+        AF.request("http://localhost:8080/tracks/\(Int(trackId))/records?page=\(currentPage)",
+                   method: .get,
+                   headers: header)
             .validate(statusCode: 200..<300)
             .response { response in
                 switch response.result {
