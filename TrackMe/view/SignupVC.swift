@@ -6,7 +6,7 @@ class SignupVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.titleView = TitleRenderer.renderTitle()
+        navigationItem.titleView = TitleRenderer.renderTitle(scale: 3)
     }
     
     @IBOutlet weak var usernameTextField: UITextField!

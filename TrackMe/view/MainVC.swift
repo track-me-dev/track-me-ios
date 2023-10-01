@@ -11,14 +11,14 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.titleView = TitleRenderer.renderTitle()
+        navigationItem.titleView = TitleRenderer.renderTitle(scale: 3)
         
         createTrackTextView.text = "나만의 트랙을 만들어\n사람들과 함께\n공유해보세요!"
-        createTrackImageView.layer.cornerRadius = 10
+        createTrackImageView.layer.cornerRadius = 15
         createTrackImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         
         searchTrackTextView.text = "사람들과 함께\n경쟁할 수도 있어요!"
-        searchTrackImageView.layer.cornerRadius = 10
+        searchTrackImageView.layer.cornerRadius = 15
         searchTrackImageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         
     }

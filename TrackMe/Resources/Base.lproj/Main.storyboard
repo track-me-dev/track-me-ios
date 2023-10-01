@@ -67,7 +67,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEx-3Z-7mY" userLabel="CreateTrackView">
-                                <rect key="frame" x="0.0" y="154.99999999999997" width="393" height="296.33333333333326"/>
+                                <rect key="frame" x="0.0" y="155" width="393" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1CI-gh-mhj" userLabel="DescriptionView">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
@@ -75,7 +75,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgt-zy-46r" userLabel="SpaceView">
                                                 <rect key="frame" x="0.0" y="0.0" width="18.666666666666668" height="110"/>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="나만의 트랙을 만들어 사람들과 함께 공유해보세요!" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWr-Sl-9EF" userLabel="descriptinoText">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="description" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWr-Sl-9EF" userLabel="descriptinoText">
                                                 <rect key="frame" x="18.666666666666671" y="0.0" width="187.33333333333331" height="110"/>
                                                 <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="17"/>
@@ -100,12 +100,12 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="II0-PA-0qy" userLabel="CreateTrackButton">
-                                        <rect key="frame" x="80" y="119.99999999999999" width="233" height="36.333333333333329"/>
+                                        <rect key="frame" x="80" y="120" width="233" height="40"/>
                                         <state key="normal" title="Button" backgroundImage="createTrackImg"/>
                                         <buttonConfiguration key="configuration" style="filled" title="트랙 생성" cornerStyle="large">
                                             <fontDescription key="titleFontDescription" name="NanumSquareNeoTTF-cBd" family="NanumSquare Neo" pointSize="20"/>
-                                            <color key="baseForegroundColor" name="TextColor"/>
-                                            <color key="baseBackgroundColor" name="SubColor"/>
+                                            <color key="baseForegroundColor" name="SubColor"/>
+                                            <color key="baseBackgroundColor" name="MainColor"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="PP1-ph-Pmt" kind="show" id="THO-JY-DV7"/>
@@ -124,7 +124,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-Lx-mSn" userLabel="SearchTrackView">
-                                <rect key="frame" x="0.0" y="351.33333333333331" width="393" height="299.99999999999994"/>
+                                <rect key="frame" x="0.0" y="355" width="393" height="296.33333333333326"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBU-el-bGu" userLabel="DescriptionView">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
@@ -138,7 +138,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vln-Tt-OBY" userLabel="SpaceView">
                                                 <rect key="frame" x="187" y="0.0" width="19" height="110"/>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="나만의 트랙을 만들어 사람들과 함께 공유해보세요!" translatesAutoresizingMaskIntoConstraints="NO" id="M9B-2s-UR8" userLabel="descriptionText">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="description" translatesAutoresizingMaskIntoConstraints="NO" id="M9B-2s-UR8" userLabel="descriptionText">
                                                 <rect key="frame" x="206" y="0.0" width="187" height="110"/>
                                                 <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="17"/>
@@ -161,12 +161,12 @@
                                         </constraints>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSj-T0-Dpg" userLabel="searchTrackButton">
-                                        <rect key="frame" x="80" y="120" width="233" height="40"/>
+                                        <rect key="frame" x="80" y="119.99999999999999" width="233" height="36.333333333333329"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="경쟁 모드 참가" cornerStyle="large">
                                             <fontDescription key="titleFontDescription" name="NanumSquareNeoTTF-cBd" family="NanumSquare Neo" pointSize="20"/>
-                                            <color key="baseForegroundColor" name="TextColor"/>
-                                            <color key="baseBackgroundColor" name="SubColor"/>
+                                            <color key="baseForegroundColor" name="SubColor"/>
+                                            <color key="baseBackgroundColor" name="MainColor"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="igl-mG-rgu" kind="show" id="yuS-7d-pKF"/>
@@ -186,7 +186,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="suB-Y4-DK1"/>
-                        <color key="backgroundColor" name="MainColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MEx-3Z-7mY" firstAttribute="leading" secondItem="suB-Y4-DK1" secondAttribute="leading" id="9qZ-93-8Fx"/>
                             <constraint firstItem="MEx-3Z-7mY" firstAttribute="top" secondItem="suB-Y4-DK1" secondAttribute="top" id="SHc-ue-3ps"/>
@@ -226,7 +226,7 @@
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="SZm-2u-Dlb"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="TEc-d9-7VI" secondAttribute="bottom" id="6H6-2v-XaG"/>
                             <constraint firstItem="TEc-d9-7VI" firstAttribute="top" secondItem="SZm-2u-Dlb" secondAttribute="top" id="p7X-uR-qDk"/>
@@ -235,12 +235,18 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Track Me" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="PxD-YG-5v7">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Item" id="bhi-2M-36w"/>
-                            <barButtonItem image="gear" catalog="system" id="KBf-Ni-8FI"/>
-                        </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" image="record.circle" catalog="system" id="jKI-Gf-1CM"/>
+                    <navigationItem key="navigationItem" title="TrackMe" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="never" id="PxD-YG-5v7">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="bhi-2M-36w">
+                            <color key="tintColor" name="MainColor"/>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="gear" catalog="system" id="KBf-Ni-8FI">
+                                <color key="tintColor" name="MainColor"/>
+                            </barButtonItem>
+                            <barButtonItem image="record.circle" catalog="system" id="jKI-Gf-1CM">
+                                <color key="tintColor" name="MainColor"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapTrackingButton" destination="bhi-2M-36w" id="3km-Kc-tOr"/>
@@ -701,7 +707,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Agt-OA-AVL"/>
                                 </constraints>
-                                <color key="textColor" systemColor="systemRedColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -982,19 +987,13 @@
         <image name="searchTrackImg" width="2926" height="1646"/>
         <image name="textfield" width="298" height="93"/>
         <namedColor name="MainColor">
-            <color red="1" green="0.73299998044967651" blue="0.36100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.39215686274509803" green="0.59999999999999998" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SubColor">
-            <color red="0.88599997758865356" green="0.36899998784065247" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="TextColor">
-            <color red="1" green="0.60799998044967651" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.61960784313725492" green="0.8666666666666667" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
