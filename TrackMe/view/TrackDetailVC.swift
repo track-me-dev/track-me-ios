@@ -118,7 +118,7 @@ extension TrackDetailVC: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-        renderer.strokeColor = .systemPink
+        renderer.strokeColor = UIColor(named: "MainColor")
         renderer.lineWidth = 8
         return renderer
     }
