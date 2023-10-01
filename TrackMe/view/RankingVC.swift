@@ -77,8 +77,8 @@ extension RankingVC: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let record = trackRecords[indexPath.row]
-            cell.textLabel?.text = "\(indexPath.row + 1). \(formatElaspsedTime(record.time))"
-            cell.textLabel?.textAlignment = .left
+            cell.textLabel?.text = "\(indexPath.row + 1). \(record.username)"
+            cell.detailTextLabel?.text = "\(formatElaspsedTime(record.time))"
             cell.isHidden = false
             break
         case 1:

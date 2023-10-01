@@ -90,6 +90,8 @@ class RecordTrackVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.titleView = TitleRenderer.renderTitle(scale: 2)
+        
         // Allow the user to change the map view's tracking mode by placing this button in the navigation bar.
         mapTrackingButton.customView = MKUserTrackingButton(mapView: mapView)
         

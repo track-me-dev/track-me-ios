@@ -42,7 +42,7 @@ class BreadcrumbPathRenderer: MKOverlayRenderer {
         let points = crumbs.locations.map { MKMapPoint($0.coordinate) }
         if let path = pathForPoints(points, mapRect: clipRect, zoomScale: zoomScale) {
             context.addPath(path)
-            context.setStrokeColor(UIColor.systemBlue.withAlphaComponent(0.5).cgColor)
+            context.setStrokeColor(UIColor(named: "MainColor")!.cgColor)
             context.setLineJoin(.round)
             context.setLineCap(.round)
             context.setLineWidth(lineWidth)
