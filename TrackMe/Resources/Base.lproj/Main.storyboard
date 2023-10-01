@@ -354,30 +354,24 @@
                                     <constraint firstItem="a9Q-VK-gRo" firstAttribute="leading" secondItem="GXt-zq-sSa" secondAttribute="leading" id="sFS-ym-q7z"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1c-Ph-sgh" userLabel="Counter">
-                                <rect key="frame" x="121.33333333333333" y="454.66666666666669" width="150.33333333333337" height="60.000000000000057"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1c-Ph-sgh" userLabel="Counter">
+                                <rect key="frame" x="181.66666666666666" y="453" width="29.666666666666657" height="66"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="MainColor"/>
                                 <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipsToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="75"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="P36-QO-oIy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="L1c-Ph-sgh" firstAttribute="centerX" secondItem="GXt-zq-sSa" secondAttribute="centerX" id="51P-AD-Or5"/>
-                            <constraint firstItem="L1c-Ph-sgh" firstAttribute="leading" secondItem="P36-QO-oIy" secondAttribute="leading" constant="121.24615384621916" id="BvH-c5-aoH"/>
                             <constraint firstItem="GXt-zq-sSa" firstAttribute="top" secondItem="P36-QO-oIy" secondAttribute="top" id="Ki1-RO-xpR"/>
                             <constraint firstAttribute="bottom" secondItem="GXt-zq-sSa" secondAttribute="bottom" id="QTH-Lk-tNN"/>
                             <constraint firstItem="GXt-zq-sSa" firstAttribute="leading" secondItem="bGf-Uz-XkO" secondAttribute="leading" id="Rd9-UE-Etw"/>
+                            <constraint firstItem="P36-QO-oIy" firstAttribute="bottom" secondItem="L1c-Ph-sgh" secondAttribute="bottom" constant="250" id="SB8-ge-U3f"/>
                             <constraint firstAttribute="trailing" secondItem="GXt-zq-sSa" secondAttribute="trailing" id="Vjw-8j-Ofx"/>
-                            <constraint firstItem="L1c-Ph-sgh" firstAttribute="top" secondItem="P36-QO-oIy" secondAttribute="top" constant="351.58461538461017" id="cD6-w0-KJc"/>
-                            <constraint firstItem="P36-QO-oIy" firstAttribute="bottom" secondItem="L1c-Ph-sgh" secondAttribute="bottom" constant="340.41538461541472" id="e9h-JD-MzK"/>
+                            <constraint firstItem="L1c-Ph-sgh" firstAttribute="top" secondItem="P36-QO-oIy" secondAttribute="top" constant="350" id="bLd-uE-zYg"/>
+                            <constraint firstItem="L1c-Ph-sgh" firstAttribute="leading" secondItem="P36-QO-oIy" secondAttribute="leading" constant="181.66999999999999" id="mrH-bn-44n"/>
+                            <constraint firstItem="P36-QO-oIy" firstAttribute="trailing" secondItem="L1c-Ph-sgh" secondAttribute="trailing" constant="181.66999999999999" id="xVz-JW-xSZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="rTs-bD-kMG">
@@ -572,7 +566,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCn-UO-66W" userLabel="Total Ranking">
                                                 <rect key="frame" x="305.66666666666669" y="0.0" width="87.333333333333314" height="55.666666666666664"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="gray" title="전체 순위"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="전체 순위"/>
                                                 <connections>
                                                     <segue destination="uf0-4o-YxP" kind="show" identifier="totalRank" id="NbY-Qe-9x5"/>
                                                 </connections>
@@ -662,12 +656,28 @@
                                 <rect key="frame" x="0.0" y="139" width="393" height="630"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rankingCell" id="eml-8j-sV1">
+                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rankingCell" textLabel="ckh-5S-CTJ" detailTextLabel="LJE-dt-Pp6" style="IBUITableViewCellStyleSubtitle" id="eml-8j-sV1">
                                         <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eml-8j-sV1" id="vTL-MD-M7j">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="ckh-5S-CTJ">
+                                                    <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="LJE-dt-Pp6">
+                                                    <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
