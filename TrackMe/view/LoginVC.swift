@@ -4,6 +4,12 @@ import KeychainSwift
 
 class LoginVC: UIViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.titleView = TitleRenderer.renderTitle()
+    }
+    
     @IBOutlet weak var usernameTextFied: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var failTextField: UITextField!
