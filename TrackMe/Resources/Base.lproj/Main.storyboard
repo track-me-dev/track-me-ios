@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="NanumSquareNeo-bRg.ttf">
+            <string>NanumSquareNeoTTF-bRg</string>
+        </array>
         <array key="NanumSquareNeo-cBd.ttf">
             <string>NanumSquareNeoTTF-cBd</string>
         </array>
@@ -63,41 +66,144 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ckq-ze-Mfg">
-                                <rect key="frame" x="0.0" y="155" width="393" height="614"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEx-3Z-7mY" userLabel="CreateTrackView">
+                                <rect key="frame" x="0.0" y="154.99999999999997" width="393" height="296.33333333333326"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="II0-PA-0qy">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="307"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Record Your Track"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1CI-gh-mhj" userLabel="DescriptionView">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tgt-zy-46r" userLabel="SpaceView">
+                                                <rect key="frame" x="0.0" y="0.0" width="18.666666666666668" height="110"/>
+                                            </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="나만의 트랙을 만들어 사람들과 함께 공유해보세요!" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWr-Sl-9EF" userLabel="descriptinoText">
+                                                <rect key="frame" x="18.666666666666671" y="0.0" width="187.33333333333331" height="110"/>
+                                                <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="createTrackImg" translatesAutoresizingMaskIntoConstraints="NO" id="NKP-vW-BUs">
+                                                <rect key="frame" x="206" y="0.0" width="187" height="110"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="NKP-vW-BUs" secondAttribute="height" multiplier="1.7:1" id="dZb-hw-T0r"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="NKP-vW-BUs" firstAttribute="width" secondItem="hWr-Sl-9EF" secondAttribute="width" id="04R-fd-14Q"/>
+                                            <constraint firstItem="hWr-Sl-9EF" firstAttribute="width" secondItem="Tgt-zy-46r" secondAttribute="width" multiplier="10" id="7dv-l8-dDc"/>
+                                            <constraint firstAttribute="bottom" secondItem="Tgt-zy-46r" secondAttribute="bottom" id="Mpf-l6-v8C"/>
+                                            <constraint firstItem="NKP-vW-BUs" firstAttribute="top" secondItem="1CI-gh-mhj" secondAttribute="top" id="P8W-6o-pgZ"/>
+                                            <constraint firstItem="Tgt-zy-46r" firstAttribute="top" secondItem="1CI-gh-mhj" secondAttribute="top" id="U7E-8C-XNi"/>
+                                            <constraint firstAttribute="trailing" secondItem="NKP-vW-BUs" secondAttribute="trailing" id="iIw-Ok-PUj"/>
+                                            <constraint firstAttribute="bottom" secondItem="NKP-vW-BUs" secondAttribute="bottom" id="jNd-rB-9bF"/>
+                                            <constraint firstItem="Tgt-zy-46r" firstAttribute="leading" secondItem="1CI-gh-mhj" secondAttribute="leading" id="jcF-en-UDW"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="II0-PA-0qy" userLabel="CreateTrackButton">
+                                        <rect key="frame" x="80" y="119.99999999999999" width="233" height="36.333333333333329"/>
+                                        <state key="normal" title="Button" backgroundImage="createTrackImg"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="트랙 생성" cornerStyle="large">
+                                            <fontDescription key="titleFontDescription" name="NanumSquareNeoTTF-cBd" family="NanumSquare Neo" pointSize="20"/>
+                                            <color key="baseForegroundColor" name="TextColor"/>
+                                            <color key="baseBackgroundColor" name="SubColor"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <segue destination="PP1-ph-Pmt" kind="show" id="THO-JY-DV7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSj-T0-Dpg">
-                                        <rect key="frame" x="0.0" y="307" width="393" height="307"/>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="II0-PA-0qy" secondAttribute="bottom" constant="140" id="48S-Hy-5u0"/>
+                                    <constraint firstItem="1CI-gh-mhj" firstAttribute="top" secondItem="MEx-3Z-7mY" secondAttribute="top" id="Qc5-8y-sC0"/>
+                                    <constraint firstAttribute="trailing" secondItem="1CI-gh-mhj" secondAttribute="trailing" id="YzB-gQ-fCL"/>
+                                    <constraint firstItem="1CI-gh-mhj" firstAttribute="leading" secondItem="MEx-3Z-7mY" secondAttribute="leading" id="ftH-eo-GUT"/>
+                                    <constraint firstAttribute="trailing" secondItem="II0-PA-0qy" secondAttribute="trailing" constant="80" id="ke9-DX-1dJ"/>
+                                    <constraint firstItem="II0-PA-0qy" firstAttribute="top" secondItem="1CI-gh-mhj" secondAttribute="bottom" constant="10" id="m1B-t6-ACp"/>
+                                    <constraint firstAttribute="height" constant="300" id="pEL-IP-dkW"/>
+                                    <constraint firstItem="II0-PA-0qy" firstAttribute="leading" secondItem="MEx-3Z-7mY" secondAttribute="leading" constant="80" id="sxz-yk-AGo"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waZ-Lx-mSn" userLabel="SearchTrackView">
+                                <rect key="frame" x="0.0" y="351.33333333333331" width="393" height="299.99999999999994"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DBU-el-bGu" userLabel="DescriptionView">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="110"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchTrackImg" translatesAutoresizingMaskIntoConstraints="NO" id="EF1-fk-0HG">
+                                                <rect key="frame" x="0.0" y="0.0" width="187" height="110"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="EF1-fk-0HG" secondAttribute="height" multiplier="1.7:1" id="nep-VA-CXc"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vln-Tt-OBY" userLabel="SpaceView">
+                                                <rect key="frame" x="187" y="0.0" width="19" height="110"/>
+                                            </view>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="나만의 트랙을 만들어 사람들과 함께 공유해보세요!" translatesAutoresizingMaskIntoConstraints="NO" id="M9B-2s-UR8" userLabel="descriptionText">
+                                                <rect key="frame" x="206" y="0.0" width="187" height="110"/>
+                                                <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="vln-Tt-OBY" secondAttribute="bottom" id="7AI-QD-VO6"/>
+                                            <constraint firstAttribute="bottom" secondItem="M9B-2s-UR8" secondAttribute="bottom" id="ETi-xG-KmU"/>
+                                            <constraint firstAttribute="trailing" secondItem="M9B-2s-UR8" secondAttribute="trailing" id="JMe-04-Bck"/>
+                                            <constraint firstItem="EF1-fk-0HG" firstAttribute="width" secondItem="M9B-2s-UR8" secondAttribute="width" id="OYX-yQ-efp"/>
+                                            <constraint firstItem="vln-Tt-OBY" firstAttribute="leading" secondItem="EF1-fk-0HG" secondAttribute="trailing" id="R5o-xe-5aL"/>
+                                            <constraint firstItem="M9B-2s-UR8" firstAttribute="leading" secondItem="vln-Tt-OBY" secondAttribute="trailing" id="Syw-XV-zqo"/>
+                                            <constraint firstItem="M9B-2s-UR8" firstAttribute="top" secondItem="DBU-el-bGu" secondAttribute="top" id="aKB-XZ-r5b"/>
+                                            <constraint firstItem="M9B-2s-UR8" firstAttribute="width" secondItem="vln-Tt-OBY" secondAttribute="width" multiplier="10" id="d0M-Tb-swx"/>
+                                            <constraint firstItem="EF1-fk-0HG" firstAttribute="leading" secondItem="DBU-el-bGu" secondAttribute="leading" id="gs8-79-o3A"/>
+                                            <constraint firstItem="vln-Tt-OBY" firstAttribute="top" secondItem="DBU-el-bGu" secondAttribute="top" id="iMV-4g-65g"/>
+                                            <constraint firstItem="EF1-fk-0HG" firstAttribute="top" secondItem="DBU-el-bGu" secondAttribute="top" id="jps-tt-yYw"/>
+                                            <constraint firstAttribute="bottom" secondItem="EF1-fk-0HG" secondAttribute="bottom" id="vVV-OH-tGF"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vSj-T0-Dpg" userLabel="searchTrackButton">
+                                        <rect key="frame" x="80" y="120" width="233" height="40"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Search Tracks"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="경쟁 모드 참가" cornerStyle="large">
+                                            <fontDescription key="titleFontDescription" name="NanumSquareNeoTTF-cBd" family="NanumSquare Neo" pointSize="20"/>
+                                            <color key="baseForegroundColor" name="TextColor"/>
+                                            <color key="baseBackgroundColor" name="SubColor"/>
+                                        </buttonConfiguration>
                                         <connections>
                                             <segue destination="igl-mG-rgu" kind="show" id="yuS-7d-pKF"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="vSj-T0-Dpg" firstAttribute="height" secondItem="II0-PA-0qy" secondAttribute="height" id="ZRb-HB-oH4"/>
+                                    <constraint firstAttribute="height" constant="300" id="1ue-d5-4hN"/>
+                                    <constraint firstAttribute="trailing" secondItem="vSj-T0-Dpg" secondAttribute="trailing" constant="80" id="QjZ-5G-qhy"/>
+                                    <constraint firstItem="vSj-T0-Dpg" firstAttribute="leading" secondItem="waZ-Lx-mSn" secondAttribute="leading" constant="80" id="ZYK-D4-WGf"/>
+                                    <constraint firstAttribute="bottom" secondItem="vSj-T0-Dpg" secondAttribute="bottom" constant="140" id="atv-9d-ZDg"/>
+                                    <constraint firstItem="DBU-el-bGu" firstAttribute="leading" secondItem="waZ-Lx-mSn" secondAttribute="leading" id="eTF-jy-moy"/>
+                                    <constraint firstItem="DBU-el-bGu" firstAttribute="top" secondItem="waZ-Lx-mSn" secondAttribute="top" id="kSt-dF-DBl"/>
+                                    <constraint firstAttribute="trailing" secondItem="DBU-el-bGu" secondAttribute="trailing" id="qqF-ev-i85"/>
+                                    <constraint firstItem="vSj-T0-Dpg" firstAttribute="top" secondItem="DBU-el-bGu" secondAttribute="bottom" constant="10" id="zJW-XE-GGT"/>
                                 </constraints>
-                            </stackView>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="suB-Y4-DK1"/>
                         <color key="backgroundColor" name="MainColor"/>
                         <constraints>
-                            <constraint firstItem="suB-Y4-DK1" firstAttribute="bottom" secondItem="ckq-ze-Mfg" secondAttribute="bottom" id="7r4-y8-gAk"/>
-                            <constraint firstItem="ckq-ze-Mfg" firstAttribute="leading" secondItem="suB-Y4-DK1" secondAttribute="leading" id="Krg-fR-QFc"/>
-                            <constraint firstItem="ckq-ze-Mfg" firstAttribute="top" secondItem="suB-Y4-DK1" secondAttribute="top" id="WMM-eU-XHy"/>
-                            <constraint firstItem="suB-Y4-DK1" firstAttribute="trailing" secondItem="ckq-ze-Mfg" secondAttribute="trailing" id="osa-M7-Vbp"/>
+                            <constraint firstItem="MEx-3Z-7mY" firstAttribute="leading" secondItem="suB-Y4-DK1" secondAttribute="leading" id="9qZ-93-8Fx"/>
+                            <constraint firstItem="MEx-3Z-7mY" firstAttribute="top" secondItem="suB-Y4-DK1" secondAttribute="top" id="SHc-ue-3ps"/>
+                            <constraint firstItem="MEx-3Z-7mY" firstAttribute="trailing" secondItem="suB-Y4-DK1" secondAttribute="trailing" id="cqc-in-fWD"/>
+                            <constraint firstItem="waZ-Lx-mSn" firstAttribute="leading" secondItem="suB-Y4-DK1" secondAttribute="leading" id="fNt-v1-ouV"/>
+                            <constraint firstItem="waZ-Lx-mSn" firstAttribute="top" secondItem="MEx-3Z-7mY" secondAttribute="bottom" constant="-100" id="hKp-tN-Rhm"/>
+                            <constraint firstItem="suB-Y4-DK1" firstAttribute="bottom" secondItem="waZ-Lx-mSn" secondAttribute="bottom" constant="165" id="qr8-yv-Flo"/>
+                            <constraint firstItem="waZ-Lx-mSn" firstAttribute="trailing" secondItem="suB-Y4-DK1" secondAttribute="trailing" id="trN-XL-XXZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p8a-79-BbS"/>
+                    <connections>
+                        <outlet property="createTrackImageView" destination="NKP-vW-BUs" id="v9V-Lg-MDb"/>
+                        <outlet property="createTrackTextView" destination="hWr-Sl-9EF" id="d1a-h0-HXU"/>
+                        <outlet property="searchTrackImageView" destination="EF1-fk-0HG" id="Zuw-qD-RCG"/>
+                        <outlet property="searchTrackTextView" destination="M9B-2s-UR8" id="kdF-6t-cET"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dS5-3c-aKq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -244,7 +350,6 @@
                             </stackView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1c-Ph-sgh" userLabel="Counter">
                                 <rect key="frame" x="121.33333333333333" y="454.66666666666669" width="150.33333333333337" height="60.000000000000057"/>
-                                <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -871,8 +976,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="createTrackImg" width="976" height="549"/>
         <image name="gear" catalog="system" width="128" height="122"/>
         <image name="record.circle" catalog="system" width="128" height="123"/>
+        <image name="searchTrackImg" width="2926" height="1646"/>
         <image name="textfield" width="298" height="93"/>
         <namedColor name="MainColor">
             <color red="1" green="0.73299998044967651" blue="0.36100000143051147" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -880,14 +987,14 @@
         <namedColor name="SubColor">
             <color red="0.88599997758865356" green="0.36899998784065247" blue="0.24300000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="TextColor">
+            <color red="1" green="0.60799998044967651" blue="0.31400001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
