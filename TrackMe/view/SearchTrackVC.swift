@@ -13,6 +13,7 @@ class SearchTrackVC: UIViewController {
     override func viewDidLoad() {
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UINib(nibName: "TrackInfoCell", bundle: nil), forCellReuseIdentifier: "trackInfoCell")
         
         let keychain = KeychainSwift()
         let header : HTTPHeaders = [
@@ -48,12 +49,12 @@ extension SearchTrackVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "trackListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "trackInfoCell", for: indexPath)
         let track = tracks[indexPath.row]
         cell.textLabel?.text = track.title
-        cell.detailTextLabel?.text = String(format: "주행 거리: %.2fkm, 평균 경사도: %.1f%",
+        cell.detailTextLabel?.text = String(format: "주행 거리: %.2fkm, 평균 경사도: %.1f%%",
                                             track.distance / 1000,
-                                            track.averageSlope!)
+                                            track.averageSlope! * 100)
         return cell
     }
 }

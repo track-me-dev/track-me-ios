@@ -16,6 +16,7 @@ class RankingVC: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(UINib(nibName: "RankCell", bundle: nil), forCellReuseIdentifier: "rankCell")
         
         requestTrackRecords()
     }
@@ -61,29 +62,31 @@ class RankingVC: UIViewController {
 extension RankingVC: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2;
+        return 2; // section: 0, 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0 { // section이 0인 경우 cell의 개수는 trackRecord의 개수
             return trackRecords.count
-        } else {
+        } else { // section이 1인 경우 cell의 개수는 1개
             return 1;
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "rankingCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "rankCell", for: indexPath)
         switch indexPath.section {
         case 0:
             let record = trackRecords[indexPath.row]
             cell.textLabel?.text = "\(indexPath.row + 1). \(record.username)"
             cell.detailTextLabel?.text = "\(formatElaspsedTime(record.time))"
+            cell.detailTextLabel?.isHidden = false
             cell.isHidden = false
             break
         case 1:
             cell.textLabel?.text = "더 보기"
             cell.textLabel?.textAlignment = .center
+            cell.detailTextLabel?.isHidden = true
             cell.isUserInteractionEnabled = true
             if isLastPage {
                 cell.isHidden = true
@@ -100,9 +103,9 @@ extension RankingVC: UITableViewDelegate {
         guard indexPath.section == 1 else {
             return
         }
+        // section이 1인 경우
         currentPage += 1
         requestTrackRecords()
-        let cell = tableView.dequeueReusableCell(withIdentifier: "rankingCell", for: indexPath)
     }
 }
 

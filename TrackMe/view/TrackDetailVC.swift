@@ -97,10 +97,10 @@ class TrackDetailVC: UIViewController {
         if let data = track {
             titleField.text = data.title
             distanceField.text = String(format: "%.2fkm", data.distance / 1000)
-            averageSlopeField.text = String(format: "%.1f%%", data.averageSlope!)
+            averageSlopeField.text = String(format: "%.1f%%", data.averageSlope! * 100)
             lowestAltitudeField.text = String(format: "%dm", Int(data.lowestAltitude!))
             highestAltitudeField.text = String(format: "%dm", Int(data.highestAltitude!))
-            rank1stField.text = String(format: "현재 1위 기록: %@", formatElaspsedTime())
+            rank1stField.text = String(format: "최고 기록: %@", formatElaspsedTime())
         }
     }
     

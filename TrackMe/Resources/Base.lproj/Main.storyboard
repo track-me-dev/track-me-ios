@@ -16,6 +16,9 @@
         <array key="NanumSquareNeo-cBd.ttf">
             <string>NanumSquareNeoTTF-cBd</string>
         </array>
+        <array key="NanumSquareNeo-eHv.ttf">
+            <string>NanumSquareNeoTTF-eHv</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Navigation Controller1-->
@@ -77,7 +80,7 @@
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="description" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWr-Sl-9EF" userLabel="descriptinoText">
                                                 <rect key="frame" x="18.666666666666671" y="0.0" width="187.33333333333331" height="110"/>
-                                                <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -140,7 +143,7 @@
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="description" translatesAutoresizingMaskIntoConstraints="NO" id="M9B-2s-UR8" userLabel="descriptionText">
                                                 <rect key="frame" x="206" y="0.0" width="187" height="110"/>
-                                                <color key="textColor" red="0.14117647059999999" green="0.28627450980000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
@@ -276,16 +279,16 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AsY-G3-62k" userLabel="Time View">
                                                 <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="83.333333333333329"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eV1-db-eXZ" userLabel="Time Label">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eV1-db-eXZ" userLabel="Time Label">
                                                         <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="41.666666666666664"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareNeoTTF-eHv" family="NanumSquare Neo" pointSize="17"/>
+                                                        <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQi-kc-I4c" userLabel="Time Value">
                                                         <rect key="frame" x="0.0" y="41.666666666666657" width="196.66666666666666" height="41.666666666666657"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="17"/>
+                                                        <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -303,16 +306,16 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jzl-9h-7lh" userLabel="Distance View">
                                                 <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="83.333333333333329"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFG-Vt-WED" userLabel="Distance Label">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="거리" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFG-Vt-WED" userLabel="Distance Label">
                                                         <rect key="frame" x="0.0" y="0.0" width="196.33333333333334" height="41.666666666666664"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareNeoTTF-eHv" family="NanumSquare Neo" pointSize="17"/>
+                                                        <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 km" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZP-fP-XZY" userLabel="Distance Value">
                                                         <rect key="frame" x="0.0" y="41.666666666666657" width="196.33333333333334" height="41.666666666666657"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="17"/>
+                                                        <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -355,9 +358,9 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1c-Ph-sgh" userLabel="Counter">
-                                <rect key="frame" x="181.66666666666666" y="453" width="29.666666666666657" height="66"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="textColor" name="MainColor"/>
+                                <rect key="frame" x="175" y="453" width="43" height="66"/>
+                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-eHv" family="NanumSquare Neo" pointSize="50"/>
+                                <color key="textColor" systemColor="linkColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -370,8 +373,8 @@
                             <constraint firstItem="P36-QO-oIy" firstAttribute="bottom" secondItem="L1c-Ph-sgh" secondAttribute="bottom" constant="250" id="SB8-ge-U3f"/>
                             <constraint firstAttribute="trailing" secondItem="GXt-zq-sSa" secondAttribute="trailing" id="Vjw-8j-Ofx"/>
                             <constraint firstItem="L1c-Ph-sgh" firstAttribute="top" secondItem="P36-QO-oIy" secondAttribute="top" constant="350" id="bLd-uE-zYg"/>
-                            <constraint firstItem="L1c-Ph-sgh" firstAttribute="leading" secondItem="P36-QO-oIy" secondAttribute="leading" constant="181.66999999999999" id="mrH-bn-44n"/>
-                            <constraint firstItem="P36-QO-oIy" firstAttribute="trailing" secondItem="L1c-Ph-sgh" secondAttribute="trailing" constant="181.66999999999999" id="xVz-JW-xSZ"/>
+                            <constraint firstItem="L1c-Ph-sgh" firstAttribute="leading" secondItem="P36-QO-oIy" secondAttribute="leading" constant="175" id="mrH-bn-44n"/>
+                            <constraint firstItem="P36-QO-oIy" firstAttribute="trailing" secondItem="L1c-Ph-sgh" secondAttribute="trailing" constant="175" id="xVz-JW-xSZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="rTs-bD-kMG">
@@ -398,39 +401,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NFY-4f-BFx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NFY-4f-BFx">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="trackListCell" textLabel="80K-gc-wxH" detailTextLabel="vYr-Um-ipc" style="IBUITableViewCellStyleSubtitle" id="eJH-Do-pet">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eJH-Do-pet" id="D3X-ab-SMN">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="80K-gc-wxH">
-                                                    <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vYr-Um-ipc">
-                                                    <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xP9-Of-6dd"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="MainColor"/>
                         <constraints>
                             <constraint firstItem="xP9-Of-6dd" firstAttribute="trailing" secondItem="NFY-4f-BFx" secondAttribute="trailing" id="1HA-cC-Bkd"/>
                             <constraint firstItem="NFY-4f-BFx" firstAttribute="top" secondItem="xP9-Of-6dd" secondAttribute="top" id="Ihn-KM-8Mi"/>
@@ -462,15 +439,18 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHk-tB-Fe8" userLabel="Title View">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="55.333333333333336"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Track Title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ar3-Wk-WtJ" userLabel="title">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="트랙명" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ar3-Wk-WtJ" userLabel="title">
                                                 <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="55.333333333333336"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-eHv" family="NanumSquare Neo" pointSize="24"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSz-gq-Qex">
                                                 <rect key="frame" x="196.66666666666663" y="0.0" width="196.33333333333337" height="55.333333333333336"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Start"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="시작하기">
+                                                    <fontDescription key="titleFontDescription" name="NanumSquareNeoTTF-cBd" family="NanumSquare Neo" pointSize="20"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <segue destination="g5y-fa-0j4" kind="show" identifier="startRace" id="ACu-hU-ZmM"/>
                                                 </connections>
@@ -490,24 +470,28 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAj-4k-2W7" userLabel="Info Name">
                                         <rect key="frame" x="0.0" y="55.333333333333343" width="393" height="28"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Distance" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s8B-iA-eSo">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="주행 거리" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s8B-iA-eSo">
                                                 <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="28"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-eHv" family="NanumSquare Neo" pointSize="10"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Avg Slope" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MF8-Yi-PKv">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="평균 경사도" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MF8-Yi-PKv">
                                                 <rect key="frame" x="98.333333333333343" y="0.0" width="98.333333333333343" height="28"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-eHv" family="NanumSquare Neo" pointSize="10"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Lowest Elev" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S2f-ff-ZdE">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="최저 고도" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S2f-ff-ZdE">
                                                 <rect key="frame" x="196.66666666666666" y="0.0" width="97.999999999999972" height="28"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-eHv" family="NanumSquare Neo" pointSize="10"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Highest Elev" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8HA-54-oBB">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="최고 고도" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8HA-54-oBB">
                                                 <rect key="frame" x="294.66666666666669" y="0.0" width="98.333333333333314" height="28"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-eHv" family="NanumSquare Neo" pointSize="10"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
@@ -520,24 +504,28 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QFf-by-3vB" userLabel="Info View">
                                         <rect key="frame" x="0.0" y="83.333333333333343" width="393" height="55.333333333333343"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="distance" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B5j-VL-jlb">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0km" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B5j-VL-jlb">
                                                 <rect key="frame" x="0.0" y="0.0" width="98.333333333333329" height="55.333333333333336"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="average slope" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ckn-AS-XAj">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0%" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ckn-AS-XAj">
                                                 <rect key="frame" x="98.333333333333343" y="0.0" width="98.333333333333343" height="55.333333333333336"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="lowest altitude" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3pP-gb-d8L">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0m" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3pP-gb-d8L">
                                                 <rect key="frame" x="196.66666666666666" y="0.0" width="97.999999999999972" height="55.333333333333336"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="highest altitude" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2uj-uJ-uF2">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0.0m" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2uj-uJ-uF2">
                                                 <rect key="frame" x="294.66666666666669" y="0.0" width="98.333333333333314" height="55.333333333333336"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
@@ -558,15 +546,18 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dbg-xq-Gpn" userLabel="Rank View">
                                         <rect key="frame" x="0.0" y="138.66666666666666" width="393" height="55.666666666666657"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="현재 1위 : 0 sec" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7tY-ta-SBJ" userLabel="Rank 1st">
-                                                <rect key="frame" x="0.0" y="0.0" width="305.66666666666669" height="55.666666666666664"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="최고 기록 : 00:00:00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7tY-ta-SBJ" userLabel="Rank 1st">
+                                                <rect key="frame" x="0.0" y="0.0" width="308.33333333333331" height="55.666666666666664"/>
+                                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCn-UO-66W" userLabel="Total Ranking">
-                                                <rect key="frame" x="305.66666666666669" y="0.0" width="87.333333333333314" height="55.666666666666664"/>
+                                                <rect key="frame" x="308.33333333333331" y="0.0" width="84.666666666666686" height="55.666666666666664"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="전체 순위"/>
+                                                <buttonConfiguration key="configuration" style="tinted" title="전체 순위">
+                                                    <fontDescription key="titleFontDescription" name="NanumSquareNeoTTF-bRg" family="NanumSquare Neo" pointSize="15"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <segue destination="uf0-4o-YxP" kind="show" identifier="totalRank" id="NbY-Qe-9x5"/>
                                                 </connections>
@@ -646,49 +637,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ranking" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7o-g4-g85">
-                                <rect key="frame" x="0.0" y="103" width="393" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체 순위" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7o-g4-g85">
+                                <rect key="frame" x="0.0" y="103" width="393" height="33.333333333333343"/>
+                                <fontDescription key="fontDescription" name="NanumSquareNeoTTF-eHv" family="NanumSquare Neo" pointSize="30"/>
+                                <color key="textColor" red="0.30196079609999998" green="0.30196079609999998" blue="0.30196079609999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="q1q-P3-lty">
-                                <rect key="frame" x="0.0" y="139" width="393" height="630"/>
+                                <rect key="frame" x="0.0" y="146.33333333333331" width="393" height="622.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rankingCell" textLabel="ckh-5S-CTJ" detailTextLabel="LJE-dt-Pp6" style="IBUITableViewCellStyleSubtitle" id="eml-8j-sV1">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eml-8j-sV1" id="vTL-MD-M7j">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="ckh-5S-CTJ">
-                                                    <rect key="frame" x="20" y="6.0000000000000009" width="25" height="14.333333333333334"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="LJE-dt-Pp6">
-                                                    <rect key="frame" x="19.999999999999996" y="22.333333333333336" width="43.666666666666664" height="14.333333333333334"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e1y-yD-MAC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="MainColor"/>
                         <constraints>
                             <constraint firstItem="M7o-g4-g85" firstAttribute="top" secondItem="e1y-yD-MAC" secondAttribute="top" id="Gaz-Zk-SYv"/>
                             <constraint firstAttribute="trailing" secondItem="M7o-g4-g85" secondAttribute="trailing" id="Ht1-pQ-9BD"/>
-                            <constraint firstItem="q1q-P3-lty" firstAttribute="top" secondItem="M7o-g4-g85" secondAttribute="bottom" id="IV4-xE-bDO"/>
+                            <constraint firstItem="q1q-P3-lty" firstAttribute="top" secondItem="M7o-g4-g85" secondAttribute="bottom" constant="10" id="IV4-xE-bDO"/>
                             <constraint firstItem="q1q-P3-lty" firstAttribute="leading" secondItem="e1y-yD-MAC" secondAttribute="leading" id="kdW-8B-NFC"/>
                             <constraint firstItem="M7o-g4-g85" firstAttribute="leading" secondItem="fsG-4x-z2x" secondAttribute="leading" id="nd4-qs-yqa"/>
                             <constraint firstItem="e1y-yD-MAC" firstAttribute="bottom" secondItem="q1q-P3-lty" secondAttribute="bottom" id="uZa-TQ-Vmq"/>
@@ -1000,8 +965,11 @@
             <color red="0.39215686274509803" green="0.59999999999999998" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SubColor">
-            <color red="0.61960784313725492" green="0.8666666666666667" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.62000000476837158" green="0.86699998378753662" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
